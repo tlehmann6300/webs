@@ -1246,10 +1246,22 @@ const initButtonAnimations = () => {
       if (firstFocusable) {
         setTimeout(() => firstFocusable.focus(), 100);
       }
+      // Verhindere Hintergrund-Scrollen wenn Mobile-Menü geöffnet ist
+      // Speichere aktuelle Scroll-Position im data-Attribut
+      document.body.dataset.scrollPosition = window.pageYOffset.toString();
+      document.body.style.top = `-${window.pageYOffset}px`;
+      document.body.classList.add('mobile-menu-open');
     });
     navbarCollapse.addEventListener('hidden.bs.collapse', () => {
       document.removeEventListener('keydown', handleFocusTrap);
       navbarToggler.focus();
+      // Stelle Hintergrund-Scrollen wieder her
+      document.body.classList.remove('mobile-menu-open');
+      const scrollY = parseInt(document.body.dataset.scrollPosition || '0');
+      document.body.style.top = '';
+      // Stelle Scroll-Position wieder her
+      window.scrollTo(0, scrollY);
+      delete document.body.dataset.scrollPosition;
     });
   };
   document.addEventListener('DOMContentLoaded', () => {
