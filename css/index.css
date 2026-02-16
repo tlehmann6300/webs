@@ -1430,7 +1430,7 @@ a.btn:focus-visible {
 }
 .competencies-section-header {
     max-width: 700px;
-    margin: 0 auto 4rem auto;
+    margin: 0 auto 3rem auto;
     position: relative;
     z-index: 1;
 }
@@ -1447,8 +1447,8 @@ a.btn:focus-visible {
 }
 .competencies-cards-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
     position: relative;
     z-index: 1;
 }
@@ -1474,7 +1474,7 @@ a.btn:focus-visible {
 }
 .competency-card__image-wrapper {
     width: 100%;
-    aspect-ratio: 4/3;
+    aspect-ratio: 16/10;
     background-color: #f1f5f9;
     overflow: hidden;
     cursor: pointer;
@@ -1496,7 +1496,7 @@ a.btn:focus-visible {
     width: 100%;
     background: transparent;
     border: none;
-    padding: 1.75rem 2rem;
+    padding: 1.25rem 1.5rem;
     text-align: left;
     cursor: pointer;
     display: flex;
@@ -1512,7 +1512,7 @@ a.btn:focus-visible {
     border-radius: 12px;
 }
 .competency-card__title {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 600;
     letter-spacing: -0.01em;
 }
@@ -1551,7 +1551,7 @@ a.btn:focus-visible {
     opacity: 0;
 }
 .competency-card__content {
-    padding: 0 2rem 2.25rem 2rem;
+    padding: 0 1.5rem 1.75rem 1.5rem;
     display: grid;
     grid-template-rows: 0fr;
     opacity: 0;
@@ -1568,9 +1568,9 @@ a.btn:focus-visible {
 }
 .competency-card__text {
     color: var(--competencies-color-text);
-    margin-bottom: 2rem;
-    font-size: 0.95rem;
-    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
 }
 @media (max-width: 768px) {
     .competency-card__text {
@@ -1637,17 +1637,13 @@ a.btn:focus-visible {
 .competency-btn-clean:hover i {
     transform: translateX(5px);
 }
-@media (max-width: 1024px) {
-    .competencies-cards-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-@media (max-width: 700px) {
+@media (max-width: 767px) {
     .competencies-cards-grid {
         grid-template-columns: 1fr;
+        gap: 1.25rem;
     }
     .competencies-section-header {
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
     }
 }
 @media (max-width: 600px) {
@@ -1659,10 +1655,10 @@ a.btn:focus-visible {
         box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
     .competency-card__trigger {
-        padding: 1.5rem;
+        padding: 1.25rem;
     }
     .competency-card__content {
-        padding: 0 1.5rem 2rem 1.5rem;
+        padding: 0 1.25rem 1.5rem 1.25rem;
     }
     .competency-btn-clean {
         width: 100%;
@@ -1691,7 +1687,7 @@ a.btn:focus-visible {
     }
     .competency-card.is-active .competency-card__content {
         display: block;
-        padding: 0 2rem 2.25rem 2rem;
+        padding: 0 1.5rem 1.75rem 1.5rem;
     }
 }
 .stats-section {
