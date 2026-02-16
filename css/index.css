@@ -137,11 +137,11 @@ a.btn:focus-visible {
 .core-values-section .value-item,
 .value-item,
 .value-card {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
-    border: 1px solid rgba(93, 167, 57, 0.1) !important;
-    border-radius: 16px !important;
-    padding: 2rem !important;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    background: linear-gradient(135deg, #ffffff 0%, var(--ibc-bg-light) 100%) !important;
+    border: 1px solid rgba(59, 130, 246, 0.1) !important;
+    border-radius: 20px !important;
+    padding: 2.5rem !important;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
     position: relative;
     overflow: visible !important;
     display: flex !important;
@@ -155,7 +155,7 @@ a.btn:focus-visible {
     left: 0;
     width: 100%;
     height: 4px;
-    background: linear-gradient(90deg, var(--ibc-green), var(--ibc-blue));
+    background: var(--gradient-primary);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.4s ease;
@@ -163,7 +163,7 @@ a.btn:focus-visible {
 .value-icon {
     font-size: 2.5rem !important;
     margin-right: 40px;
-    background: linear-gradient(135deg, var(--ibc-green), var(--ibc-blue)) !important;
+    background: var(--gradient-primary) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
     background-clip: text !important;
@@ -464,17 +464,17 @@ a.btn:focus-visible {
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    background: linear-gradient(135deg, var(--ibc-green, #6D9744) 0%, var(--ibc-green-light, #7db356) 100%);
+    background: var(--gradient-success);
     text-decoration: none !important;
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    box-shadow: 0 4px 15px rgba(109, 151, 68, 0.3);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: var(--shadow-glow-green);
     margin-top: auto;
     z-index: 2;
 }
 .ethereal-button:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 4px var(--ibc-white, #ffffff), 0 0 0 7px var(--ibc-green, #6D9744);
+    box-shadow: 0 0 0 4px var(--ibc-white, #ffffff), 0 0 0 7px var(--ibc-green);
 }
 .ethereal-button::before {
     content: "";
@@ -494,7 +494,7 @@ a.btn:focus-visible {
     position: absolute;
     inset: 0;
     border-radius: 50px;
-    background: linear-gradient(90deg, var(--ibc-green, #6D9744), var(--ibc-green-light, #7db356), var(--ibc-green, #6D9744));
+    background: linear-gradient(90deg, var(--ibc-green), var(--ibc-green-light), var(--ibc-green));
     background-size: 300%;
     opacity: 0;
     filter: blur(15px);
@@ -511,9 +511,9 @@ a.btn:focus-visible {
     gap: 8px;
 }
 .ethereal-button:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 12px 30px rgba(109, 151, 68, 0.5);
-    background: linear-gradient(135deg, var(--ibc-green-light, #7db356) 0%, var(--ibc-green, #6D9744) 100%);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: var(--shadow-hover), var(--shadow-glow-green);
+    background: var(--gradient-success);
 }
 .ethereal-button:hover::before {
     left: 130%;
