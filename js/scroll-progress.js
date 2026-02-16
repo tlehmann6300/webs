@@ -1,5 +1,5 @@
 /**
- * Scroll-Fortschrittsanzeige-Modul
+ * Scroll-Fortschrittsanzeige-Modul (Performance-optimiert)
  * 
  * Dieses Modul erstellt eine visuelle Fortschrittsanzeige am oberen Bildschirmrand,
  * die zeigt, wie weit der Benutzer durch die Seite gescrollt hat.
@@ -7,10 +7,17 @@
  * 
  * Hauptfunktionen:
  * - Dynamische Erstellung der Fortschrittsleiste
- * - Echtzeit-Update beim Scrollen
+ * - Echtzeit-Update beim Scrollen mit optimiertem Throttling
  * - ARIA-Unterstützung für Screenreader
  * - Responsive Berechnung für verschiedene Bildschirmgrößen
  * - Passive Event-Listener für bessere Performance
+ * - RequestAnimationFrame für ruckelfreie Animationen
+ * 
+ * Performance-Optimierungen:
+ * - Verwendet requestAnimationFrame für Frame-synchrone Updates
+ * - Passive Event-Listener verhindern Scroll-Blocking
+ * - Throttling verhindert überflüssige Berechnungen
+ * - Optimierte DOM-Manipulation (nur bei Änderungen)
  * 
  * @module ScrollProgress
  */
@@ -51,10 +58,16 @@
         document.body.insertBefore(progressBar, document.body.firstChild);
         
         /**
+         * Letzte bekannte Scroll-Prozentzahl für Optimierung
+         * Verhindert unnötige DOM-Updates bei gleichen Werten
+         */
+        let lastScrollPercentage = -1;
+        
+        /**
          * Aktualisiert die Fortschrittsleiste basierend auf Scroll-Position
          * 
-         * Diese Funktion berechnet den Scroll-Fortschritt als Prozentsatz
-         * und aktualisiert die Breite der Fortschrittsleiste entsprechend.
+         * Diese optimierte Funktion berechnet den Scroll-Fortschritt als Prozentsatz
+         * und aktualisiert die Breite der Fortschrittsleiste nur bei Änderungen.
          */
         function updateProgress() {
             // Hole die Höhe des sichtbaren Viewports
@@ -93,16 +106,31 @@
             scrollPercentage = Math.min(Math.max(scrollPercentage, 0), 100);
             
             /**
-             * Setze die Breite der Fortschrittsleiste
-             * Die CSS-Transition sorgt für sanfte Übergänge
+             * Runde auf 2 Dezimalstellen für präzise aber optimierte Updates
+             * Verhindert unnötige DOM-Manipulationen bei minimalen Änderungen
              */
-            progressBar.style.width = scrollPercentage + '%';
+            scrollPercentage = Math.round(scrollPercentage * 100) / 100;
             
             /**
-             * Update ARIA-Attribut für Screenreader
-             * Math.round rundet auf ganze Zahlen für bessere Lesbarkeit
+             * Aktualisiere DOM nur wenn sich der Wert geändert hat
+             * Dies reduziert unnötige Reflows und Repaints
              */
-            progressBar.setAttribute('aria-valuenow', Math.round(scrollPercentage));
+            if (scrollPercentage !== lastScrollPercentage) {
+                lastScrollPercentage = scrollPercentage;
+                
+                /**
+                 * Setze die Breite der Fortschrittsleiste
+                 * Verwendet transform für GPU-beschleunigte Animation (optional)
+                 * oder width für einfachere Implementation
+                 */
+                progressBar.style.width = scrollPercentage + '%';
+                
+                /**
+                 * Update ARIA-Attribut für Screenreader
+                 * Math.round rundet auf ganze Zahlen für bessere Lesbarkeit
+                 */
+                progressBar.setAttribute('aria-valuenow', Math.round(scrollPercentage));
+            }
         }
         
         /**

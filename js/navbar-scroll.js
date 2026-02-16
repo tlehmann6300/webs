@@ -1,10 +1,13 @@
 /**
- * Navbar-Scroll-Effekt
+ * Navbar-Scroll-Effekt (Optimiert mit IntersectionObserver)
  * 
- * Dieses einfache Skript fügt der Navigationsleiste einen visuellen Effekt hinzu,
- * wenn der Benutzer scrollt. Wenn die Seite mehr als 50 Pixel nach unten gescrollt
- * wird, erhält die Navbar die 'scrolled'-Klasse, die z.B. einen Schatten oder
- * veränderten Hintergrund aktivieren kann.
+ * Dieses optimierte Skript fügt der Navigationsleiste einen visuellen Effekt hinzu,
+ * wenn der Benutzer scrollt. Verwendet einen IntersectionObserver anstelle von
+ * Scroll-Event-Listenern für bessere Performance und ruckelfreies Scrollen.
+ * 
+ * Wenn die Seite mehr als 50 Pixel nach unten gescrollt wird, erhält die Navbar
+ * die 'scrolled'-Klasse, die z.B. einen Schatten oder veränderten Hintergrund
+ * aktivieren kann.
  * 
  * @module NavbarScroll
  */
@@ -13,45 +16,60 @@
 const navbar = document.querySelector('.navbar');
 
 /**
- * Event-Listener für das Scroll-Event des Fensters
+ * IntersectionObserver-basierte Implementierung
  * 
- * Wird bei jedem Scroll-Event ausgelöst und prüft die vertikale
- * Scroll-Position. Bei mehr als 50 Pixeln wird die 'scrolled'-Klasse
- * hinzugefügt, ansonsten entfernt.
- * 
- * HINWEIS: Diese Funktion ist eine Backup-Implementierung.
- * Die Haupt-Implementierung mit Throttling und RequestAnimationFrame
- * befindet sich in main.js. Dieser Code wird nur ausgeführt, wenn
- * main.js nicht geladen ist.
+ * Verwendet einen unsichtbaren "Sentinel"-Element am Anfang der Seite (50px hoch).
+ * Wenn dieses Element aus dem Viewport verschwindet (nicht mehr sichtbar), wird
+ * die 'scrolled'-Klasse zur Navbar hinzugefügt. Dies ist performanter als
+ * Scroll-Event-Listener, da der Browser die Berechnungen optimieren kann.
  */
 if (!document.querySelector('[data-navbar-scroll-loaded]')) {
     // Füge Marker hinzu, um Duplikate zu vermeiden
     document.documentElement.setAttribute('data-navbar-scroll-loaded', 'true');
     
     /**
-     * Throttle-Funktion zur Performance-Optimierung
-     * Verwendet requestAnimationFrame für optimales Timing
+     * Erstelle ein Sentinel-Element
+     * Dieses unsichtbare Element dient als Trigger für den IntersectionObserver
+     * Es ist 50px hoch und wird am Anfang der Seite platziert
      */
-    let ticking = false;
-    const handleScroll = () => {
-        if (!ticking) {
-            requestAnimationFrame(() => {
-                // Prüfe, ob die Seite mehr als 50 Pixel nach unten gescrollt ist
-                if (window.scrollY > 50) {
-                    // Füge 'scrolled'-Klasse hinzu für visuellen Effekt
-                    navbar.classList.add('scrolled');
-                } else {
-                    // Entferne 'scrolled'-Klasse, wenn oben auf der Seite
-                    navbar.classList.remove('scrolled');
-                }
-                ticking = false;
-            });
-            ticking = true;
-        }
-    };
+    const sentinel = document.createElement('div');
+    sentinel.id = 'navbar-scroll-sentinel';
+    sentinel.style.position = 'absolute';
+    sentinel.style.top = '0';
+    sentinel.style.left = '0';
+    sentinel.style.width = '1px';
+    sentinel.style.height = '50px';
+    sentinel.style.pointerEvents = 'none';
+    sentinel.style.visibility = 'hidden';
     
-    // Verwende passive event listener für bessere Performance
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Füge Sentinel am Anfang des Body ein
+    document.body.insertBefore(sentinel, document.body.firstChild);
+    
+    /**
+     * IntersectionObserver-Callback
+     * Wird aufgerufen, wenn das Sentinel-Element in den/aus dem Viewport scrollt
+     */
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Sentinel ist sichtbar = Seite ist oben
+                navbar.classList.remove('scrolled');
+            } else {
+                // Sentinel ist nicht sichtbar = Seite ist nach unten gescrollt
+                navbar.classList.add('scrolled');
+            }
+        });
+    }, {
+        // threshold: 0 bedeutet, dass der Observer triggert,
+        // sobald auch nur 1px des Elements sichtbar/unsichtbar wird
+        threshold: 0,
+        // rootMargin erlaubt uns, den Trigger-Bereich zu erweitern
+        // Hier verwenden wir 0px für exaktes Verhalten
+        rootMargin: '0px'
+    });
+    
+    // Starte Beobachtung des Sentinel-Elements
+    observer.observe(sentinel);
 }
 
 /**
