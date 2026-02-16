@@ -121,7 +121,7 @@ main,
 
 /* ===== NAVBAR RESPONSIVE ===== */
 .navbar {
-  /* Padding defined in style.css for consistency */
+  /* Mobile padding adjustments defined in style.css @media queries */
   transition: all 0.3s ease;
   /* Hardware acceleration for smooth transitions */
   transform: translateZ(0);
@@ -149,7 +149,7 @@ main,
   }
   
   .navbar-collapse {
-    /* Additional mobile-specific styles merged from style.css */
+    /* Mobile-specific collapse styles now centrally defined in style.css */
     flex-basis: 100%;
   }
   
