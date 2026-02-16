@@ -24,33 +24,12 @@
     <link rel="alternate" hreflang="fr" href="https://business-consulting.de/index.html?lang=fr">
     <link rel="alternate" hreflang="x-default" href="https://business-consulting.de/index.html">
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              'ibc-green': '#6D9744',
-              'ibc-green-light': '#7db356',
-              'ibc-green-dark': '#355B2C',
-              'ibc-blue': '#20234A',
-              'ibc-blue-dark': '#151730',
-              'ibc-blue-medium': '#4d5061',
-              'ibc-accent-orange': '#ef9e27',
-              'ibc-accent-blue': '#3481b9',
-            }
-          }
-        },
-        corePlugins: {
-          preflight: false,
-        }
-      }
-    </script>
     <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/responsive-enhancements.css">
+    <link rel="stylesheet" href="css/tailwind-utilities.css">
     <link rel="icon" href="assets/img/cropped_maskottchen_32x32.webp" type="image/webp" sizes="32x32" />
     <link rel="icon" href="assets/img/cropped_maskottchen_192x192.webp" type="image/webp" sizes="192x192" />
     <link rel="apple-touch-icon" href="assets/img/cropped_maskottchen_180x180.webp" />
@@ -91,7 +70,7 @@
 <body class="homepage">
     <a href="#main-content" class="skip-link" data-i18n="skip-link">Zum Hauptinhalt springen</a>
     <nav class="navbar navbar-expand-lg sticky top-0 z-50 bg-white shadow-sm transition-all duration-300" aria-label="Hauptnavigation" role="navigation">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto px-4">
             <a class="navbar-brand" href="index.html" aria-label="Zur Startseite">
                 <img src="assets/img/ibc_logo_original_navbar.webp" alt="IBC Logo" class="navbar-logo">
             </a>
@@ -202,26 +181,26 @@
                 <span class="visually-hidden" data-i18n="video-pause">Pause</span>
             </button>
             <div class="overlay"></div>
-            <div class="container js-reveal px-4 sm:px-6 lg:px-8">
-                <div class="col-lg-8 max-w-full lg:max-w-[66.666667%]">
-                    <h1 class="ibc-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4" data-i18n="hero-title" aria-label="Ihre studentische Unternehmensberatung">Ihre <span class="text-gradient">studentische</span> Unternehmensberatung</h1>
-                    <p class="ibc-lead mt-4 text-lg sm:text-xl md:text-2xl leading-relaxed" data-i18n="hero-subtitle">Innovation, Fortschritt und Gemeinschaft, direkt aus dem Herzen des Schwarzwalds.</p>
-                    <a href="kontakt.html" class="btn btn-ibc bubbly-button magnetic-element mt-4 fade-in-up inline-block w-full sm:w-auto text-center" style="transition-delay: 0.4s;" data-i18n="hero-cta">Projekt
+            <div class="container js-reveal px-4">
+                <div class="col-lg-8 max-w-full">
+                    <h1 class="ibc-heading text-3xl font-bold leading-tight mb-4" data-i18n="hero-title" aria-label="Ihre studentische Unternehmensberatung">Ihre <span class="text-gradient">studentische</span> Unternehmensberatung</h1>
+                    <p class="ibc-lead mt-4 text-lg leading-relaxed" data-i18n="hero-subtitle">Innovation, Fortschritt und Gemeinschaft, direkt aus dem Herzen des Schwarzwalds.</p>
+                    <a href="kontakt.html" class="btn btn-ibc bubbly-button magnetic-element mt-4 fade-in-up inline-block w-full text-center" style="transition-delay: 0.4s;" data-i18n="hero-cta">Projekt
                         anfragen</a>
                 </div>
             </div>
         </section>
-        <section class="competencies-section py-12 sm:py-16 md:py-20 lg:py-24" id="competencies-section" aria-labelledby="competencies-heading-main">
+        <section class="competencies-section py-12" id="competencies-section" aria-labelledby="competencies-heading-main">
             <div class="competencies-ambient-layer" aria-hidden="true">
                 <div class="competencies-orb competencies-orb-1"></div>
                 <div class="competencies-orb competencies-orb-2"></div>
             </div>
-            <div class="container py-5 px-4 sm:px-6 lg:px-8 mx-auto">
+            <div class="container py-4 px-4 mx-auto">
                 <header class="competencies-section-header text-center reveal-fx js-reveal mb-12">
-                    <h2 id="competencies-heading-main" class="ibc-heading text-3xl sm:text-4xl md:text-5xl font-bold mb-4" data-i18n="competencies-heading" aria-label="Unsere Kompetenzen"><span class="text-gradient">Unsere</span> <span class="text-gradient">Kompetenzen</span></h2>
-                    <p class="ibc-lead text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto" data-i18n="competencies-subtitle">Wir bringen frische Perspektiven und aktuelles Wissen in Ihr Projekt.</p>
+                    <h2 id="competencies-heading-main" class="ibc-heading text-3xl font-bold mb-4" data-i18n="competencies-heading" aria-label="Unsere Kompetenzen"><span class="text-gradient">Unsere</span> <span class="text-gradient">Kompetenzen</span></h2>
+                    <p class="ibc-lead text-lg max-w-3xl mx-auto" data-i18n="competencies-subtitle">Wir bringen frische Perspektiven und aktuelles Wissen in Ihr Projekt.</p>
                 </header>
-                <div class="competencies-cards-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8" id="competenciesAccordionGroup" role="region" data-i18n-aria="competencies-section-aria-label" aria-label="Unsere Kompetenzen">
+                <div class="competencies-cards-grid grid grid-cols-1 gap-6" id="competenciesAccordionGroup" role="region" data-i18n-aria="competencies-section-aria-label" aria-label="Unsere Kompetenzen">
                     <article class="competency-card reveal-fx">
                         <div class="competency-card__image-wrapper">
                             <img src="assets/img/competencies/app-development.webp"
