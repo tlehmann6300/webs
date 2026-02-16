@@ -818,11 +818,15 @@ h1 {
 h2 {
     font-size: clamp(1.5rem, 3vw, 2.2rem);
     font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--ibc-blue);
+}
+h2.ibc-heading,
+h2.section-heading,
+.section-heading h2 {
     position: relative;
     display: inline-block;
     padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
-    color: var(--ibc-blue);
 }
 @supports (-webkit-background-clip: text) or (background-clip: text) {
     .section-heading h2,
@@ -837,6 +841,13 @@ h2 {
     }
 }
 h2::after {
+    content: none;
+}
+.section-heading h2::after,
+h2.ibc-heading::after,
+h2.section-heading::after,
+.section-heading-wrapper h2::after,
+.section-heading-animated::after {
     content: '';
     position: absolute;
     bottom: 0;
