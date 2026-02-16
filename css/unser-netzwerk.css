@@ -421,8 +421,8 @@ a.ethereal-button {
     }
 }
 .fade-in-up {
-    opacity: 0;
-    transform: translateY(30px);
+    opacity: 1;
+    transform: none;
     transition: opacity 1s var(--ease-out-expo), transform 1s var(--ease-out-expo);
     transition-delay: var(--animation-delay, 0s);
 }
