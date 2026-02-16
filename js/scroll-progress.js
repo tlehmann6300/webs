@@ -106,17 +106,59 @@
         }
         
         /**
+         * Throttling-Variable für requestAnimationFrame
+         * Verhindert mehrfache gleichzeitige Updates für optimale Performance
+         */
+        let ticking = false;
+        
+        /**
+         * Throttled Scroll-Handler mit requestAnimationFrame
+         * Stellt sicher, dass Updates nur einmal pro Frame erfolgen
+         */
+        function handleScroll() {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    updateProgress();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+        
+        /**
+         * Throttling-Variable für Resize-Events
+         * Verhindert mehrfache gleichzeitige Updates bei Fenstergrößen-Änderungen
+         */
+        let resizeTicking = false;
+        
+        /**
+         * Throttled Resize-Handler mit requestAnimationFrame
+         * Stellt sicher, dass Updates nur einmal pro Frame erfolgen
+         */
+        function handleResize() {
+            if (!resizeTicking) {
+                requestAnimationFrame(() => {
+                    updateProgress();
+                    resizeTicking = false;
+                });
+                resizeTicking = true;
+            }
+        }
+        
+        /**
          * Event-Listener für Scroll-Events
          * passive: true verhindert Blocking für bessere Performance
+         * Verwendet throttled Handler für optimierte Performance
          */
-        window.addEventListener('scroll', updateProgress, { passive: true });
+        window.addEventListener('scroll', handleScroll, { passive: true });
         
         /**
          * Event-Listener für Resize-Events
          * Aktualisiert Fortschritt bei Fenstergrößen-Änderung
          * (z.B. beim Drehen eines Mobilgeräts)
+         * Verwendet throttled Handler für optimierte Performance
          */
-        window.addEventListener('resize', updateProgress, { passive: true });
+        window.addEventListener('resize', handleResize, { passive: true });
         
         // Initiale Berechnung beim Laden der Seite
         updateProgress();
