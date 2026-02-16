@@ -1,0 +1,381 @@
+/* Enhanced Responsive Utilities for IBC Website */
+/* This file enhances Bootstrap and Tailwind with specific responsive fixes */
+
+/* ===== RESPONSIVE CONTAINER IMPROVEMENTS ===== */
+.container {
+  width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+}
+
+/* ===== HERO SECTION RESPONSIVE ===== */
+#hero-section {
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height for mobile */
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+#hero-section .container {
+  width: 100%;
+  z-index: 2;
+}
+
+#hero-section h1 {
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+#hero-section .ibc-lead {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  #hero-section h1 {
+    font-size: clamp(1.75rem, 8vw, 3rem);
+  }
+  
+  #hero-section .col-lg-8 {
+    max-width: 100%;
+  }
+}
+
+/* ===== NAVBAR RESPONSIVE ===== */
+.navbar {
+  padding: 1rem 0;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand img {
+  height: auto;
+  max-height: 50px;
+  width: auto;
+}
+
+@media (max-width: 991px) {
+  .navbar-collapse {
+    background: #ffffff;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-nav .nav-link {
+    padding: 0.75rem 0;
+  }
+  
+  .navbar .lang-toggle {
+    margin-top: 1rem;
+  }
+}
+
+/* ===== COMPETENCY CARDS RESPONSIVE ===== */
+.competencies-cards-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+}
+
+@media (min-width: 768px) {
+  .competencies-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .competencies-cards-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.competency-card {
+  width: 100%;
+  height: 100%;
+}
+
+.competency-card__image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+/* ===== STATS SECTION RESPONSIVE ===== */
+.stats-section {
+  padding: clamp(3rem, 8vw, 6rem) 0;
+}
+
+.stat-card {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  text-align: center;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.stat-number {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  color: var(--ibc-green, #6D9744);
+}
+
+.stat-title {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  margin-top: 0.5rem;
+}
+
+/* ===== INFO CARDS RESPONSIVE ===== */
+.info-cards-container {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
+
+@media (min-width: 992px) {
+  .info-cards-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ===== VALUES/PHYSICS CARDS RESPONSIVE ===== */
+.physics-card-wrap {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 991px) {
+  .physics-card-wrap {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ===== FOOTER RESPONSIVE ===== */
+.footer-section {
+  padding: clamp(2rem, 5vw, 4rem) 0;
+}
+
+.footer-cta .col-xl-6 {
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 1200px) {
+  .footer-cta .col-xl-6:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* ===== BUTTONS RESPONSIVE ===== */
+.btn-ibc,
+.bubbly-button {
+  padding: clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2.5rem);
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+}
+
+@media (max-width: 576px) {
+  .btn-ibc,
+  .bubbly-button {
+    width: 100%;
+    display: block;
+  }
+}
+
+/* ===== VIDEO RESPONSIVE ===== */
+#hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 0;
+}
+
+@media (max-width: 768px) {
+  #hero-video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* ===== TEXT RESPONSIVE UTILITIES ===== */
+.ibc-heading {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.ibc-lead {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  line-height: 1.6;
+}
+
+/* ===== SPACING RESPONSIVE ===== */
+.section-spacing {
+  padding: clamp(3rem, 8vw, 6rem) 0;
+}
+
+/* ===== IMAGE RESPONSIVE ===== */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===== PREVENT HORIZONTAL OVERFLOW ===== */
+body,
+html {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ===== TOUCH OPTIMIZATION ===== */
+@media (hover: none) and (pointer: coarse) {
+  button,
+  a,
+  .nav-link,
+  .btn {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* ===== ACCORDION/COLLAPSE FIXES ===== */
+.competency-card__content {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+/* ===== GRID SYSTEM ENHANCEMENTS ===== */
+@media (max-width: 767px) {
+  [class*="col-"] {
+    margin-bottom: 1.5rem;
+  }
+  
+  [class*="col-"]:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* ===== INSTAGRAM EMBED FIX ===== */
+.instagram-media,
+.instagram-card {
+  max-width: 100% !important;
+  min-width: auto !important;
+  width: 100% !important;
+}
+
+@media (max-width: 768px) {
+  .instagram-section .row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .instagram-section [class*="col-"] {
+    width: 100%;
+    max-width: 500px;
+  }
+}
+
+/* ===== TESTIMONIALS RESPONSIVE ===== */
+.testimonial-section {
+  padding: clamp(3rem, 6vw, 5rem) 0;
+}
+
+.testimonial-section blockquote {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* ===== FORM RESPONSIVE ===== */
+.form-control,
+.form-select,
+textarea {
+  width: 100%;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  padding: clamp(0.5rem, 2vw, 0.75rem) clamp(0.75rem, 2vw, 1rem);
+}
+
+/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--ibc-blue, #20234A);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .navbar,
+  .footer-section,
+  .btn,
+  button {
+    display: none !important;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+  
+  h1 {
+    font-size: 24pt;
+  }
+  
+  h2 {
+    font-size: 20pt;
+  }
+  
+  h3 {
+    font-size: 16pt;
+  }
+}
