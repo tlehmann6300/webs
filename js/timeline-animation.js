@@ -51,6 +51,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             ticking = true;
         }
-    });
+    }, { passive: true });
     updateTimeline();
 });
