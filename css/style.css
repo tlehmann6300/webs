@@ -16,6 +16,12 @@ html {
   outline: none;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: contain;
+  /* Scroll padding for smooth anchor navigation */
+  scroll-padding-top: 80px;
+  /* Text size adjustment */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 body {
   overflow-x: hidden;
@@ -31,6 +37,10 @@ body {
   outline: none;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: contain;
+  overscroll-behavior-x: none;
+  /* Better font rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 img, video, iframe, embed, object, canvas {
   border: none;

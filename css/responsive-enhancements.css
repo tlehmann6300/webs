@@ -1,6 +1,51 @@
 /* Enhanced Responsive Utilities for IBC Website */
 /* This file enhances Bootstrap and Tailwind with specific responsive fixes */
 
+/* ===== CROSS-BROWSER SCROLLING IMPROVEMENTS ===== */
+/* Smooth scrolling with fallbacks for all browsers */
+html {
+  scroll-behavior: smooth;
+  /* Safari/iOS momentum scrolling */
+  -webkit-overflow-scrolling: touch;
+  /* Prevent overscroll bounce on Safari */
+  overscroll-behavior-y: contain;
+  /* Scroll padding for sticky navbar - works in all modern browsers */
+  scroll-padding-top: 80px;
+}
+
+/* Disable smooth scroll when user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Better scrollbar styling for Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #20234A;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6D9744;
+}
+
+/* Scrollbar for Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #20234A rgba(0, 0, 0, 0.05);
+}
+
 /* ===== RESPONSIVE CONTAINER IMPROVEMENTS ===== */
 .container {
   width: 100%;
@@ -8,6 +53,8 @@
   padding-left: 1rem;
   margin-right: auto;
   margin-left: auto;
+  /* Prevent horizontal overflow */
+  max-width: 100%;
 }
 
 @media (min-width: 576px) {
@@ -27,15 +74,19 @@
 /* ===== HERO SECTION RESPONSIVE ===== */
 #hero-section {
   min-height: 100vh;
+  /* Safari iOS address bar fix - use dynamic viewport */
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   position: relative;
+  /* Prevent scroll issues on mobile */
+  overflow: hidden;
 }
 
-/* Use dynamic viewport height where supported for better mobile experience */
-@supports (min-height: 100dvh) {
+/* Fallback for browsers that don't support dvh */
+@supports not (min-height: 100dvh) {
   #hero-section {
-    min-height: 100dvh;
+    min-height: 100vh;
   }
 }
 
@@ -70,12 +121,19 @@
 .navbar {
   padding: 1rem 0;
   transition: all 0.3s ease;
+  /* Ensure navbar stays on top during scroll */
+  will-change: transform;
+  /* Hardware acceleration for smooth transitions */
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .navbar-brand img {
   height: auto;
   max-height: 50px;
   width: auto;
+  /* Prevent image distortion */
+  object-fit: contain;
 }
 
 @media (max-width: 991px) {
@@ -85,14 +143,25 @@
     margin-top: 1rem;
     border-radius: 12px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    /* Smooth expand/collapse animation */
+    transition: all 0.3s ease-in-out;
+    /* Prevent horizontal scroll on mobile menu */
+    max-width: 100%;
+    overflow-x: hidden;
   }
   
   .navbar-nav .nav-link {
     padding: 0.75rem 0;
+    /* Larger touch target on mobile */
+    min-height: 48px;
+    display: flex;
+    align-items: center;
   }
   
   .navbar .lang-toggle {
     margin-top: 1rem;
+    /* Ensure language toggle is easily tappable */
+    min-height: 48px;
   }
 }
 
@@ -234,6 +303,8 @@
   transform: translate(-50%, -50%);
   object-fit: cover;
   z-index: 0;
+  /* Prevent video from causing overflow */
+  max-width: none;
 }
 
 @media (max-width: 768px) {
@@ -241,6 +312,11 @@
     object-fit: cover;
     width: 100%;
     height: 100%;
+    /* Ensure video doesn't cause scroll issues on mobile */
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: none;
   }
 }
 
@@ -273,13 +349,28 @@ html {
   overflow-x: hidden;
   width: 100%;
   position: relative;
+  /* Better text rendering on all browsers */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 * {
   box-sizing: border-box;
+  /* Prevent unwanted scrolling on touch devices */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent all sections from causing horizontal scroll */
+section,
+.container,
+.row {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* ===== TOUCH OPTIMIZATION ===== */
+/* Optimize for touch devices - larger tap targets */
 @media (hover: none) and (pointer: coarse) {
   button,
   a,
@@ -288,6 +379,19 @@ html {
     min-height: 44px;
     min-width: 44px;
     padding: 0.75rem 1rem;
+  }
+  
+  /* Prevent iOS double-tap to zoom on buttons */
+  button,
+  a,
+  input,
+  textarea {
+    touch-action: manipulation;
+  }
+  
+  /* Improve scrolling performance on touch devices */
+  * {
+    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -388,5 +492,146 @@ textarea {
   
   h3 {
     font-size: 16pt;
+  }
+}
+
+/* ===== ADDITIONAL CROSS-BROWSER FIXES ===== */
+
+/* Fix for Safari flex bugs */
+.navbar-nav,
+.navbar-collapse {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+}
+
+/* Prevent text size adjustment on orientation change (iOS Safari) */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Better focus styles for keyboard navigation (Firefox, Safari, Chrome) */
+*:focus-visible {
+  outline: 2px solid var(--ibc-green, #6D9744);
+  outline-offset: 2px;
+}
+
+/* Remove default focus outline only when focus-visible is supported */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Smooth font rendering across browsers */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fix for fixed positioning on iOS Safari */
+@supports (-webkit-touch-callout: none) {
+  .navbar.sticky,
+  .navbar.fixed-top {
+    position: -webkit-sticky;
+    position: sticky;
+  }
+}
+
+/* Improve button appearance in Safari */
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  appearance: button;
+}
+
+/* Fix for Safari not respecting aspect ratio */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Prevent Safari from adding extra margin to inputs */
+input,
+textarea,
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Better select styling for all browsers */
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 12px;
+  padding-right: 2.5rem;
+}
+
+/* Performance optimizations for animations */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
+  
+  /* Use GPU acceleration for smoother animations */
+  .navbar,
+  .btn,
+  .competency-card,
+  .stat-card {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+}
+
+/* Fix overscroll behavior for better UX on all browsers */
+body {
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: contain;
+}
+
+/* Ensure modals and dialogs work properly on iOS */
+.modal,
+.dialog,
+[role="dialog"] {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+}
+
+/* Fix for sticky elements in Safari */
+.sticky,
+[class*="sticky"],
+.navbar.fixed-top {
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 1000;
+}
+
+/* Improve rendering of transforms on Safari */
+.transform,
+[style*="transform"] {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Better grid support for older browsers */
+@supports not (display: grid) {
+  .competencies-cards-grid,
+  .info-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  
+  .competencies-cards-grid > *,
+  .info-cards-container > * {
+    flex: 1 1 calc(50% - 0.75rem);
+    min-width: 280px;
   }
 }
