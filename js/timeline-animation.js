@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!timelineContainer || !progressLine) return;
     
     /**
-     * RequestAnimationFrame Throttling-Variable
+     * RequestAnimationFrame-Throttling-Variable
      * Verhindert mehrfache gleichzeitige Updates für optimale Performance
      */
     let ticking = false;

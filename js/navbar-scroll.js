@@ -37,7 +37,7 @@ if (!document.querySelector('[data-navbar-scroll-loaded]')) {
     sentinel.style.position = 'absolute';
     sentinel.style.top = '0';
     sentinel.style.left = '0';
-    sentinel.style.width = '1px';
+    sentinel.style.width = '100%';
     sentinel.style.height = '50px';
     sentinel.style.pointerEvents = 'none';
     sentinel.style.visibility = 'hidden';

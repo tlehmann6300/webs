@@ -106,10 +106,10 @@
             scrollPercentage = Math.min(Math.max(scrollPercentage, 0), 100);
             
             /**
-             * Runde auf 2 Dezimalstellen für präzise aber optimierte Updates
-             * Verhindert unnötige DOM-Manipulationen bei minimalen Änderungen
+             * Runde auf ganze Zahl für optimale Performance
+             * Browser rendert Prozentsätze ohnehin gerundet
              */
-            scrollPercentage = Math.round(scrollPercentage * 100) / 100;
+            scrollPercentage = Math.round(scrollPercentage);
             
             /**
              * Aktualisiere DOM nur wenn sich der Wert geändert hat
@@ -127,9 +127,9 @@
                 
                 /**
                  * Update ARIA-Attribut für Screenreader
-                 * Math.round rundet auf ganze Zahlen für bessere Lesbarkeit
+                 * Bereits als ganze Zahl gerundet
                  */
-                progressBar.setAttribute('aria-valuenow', Math.round(scrollPercentage));
+                progressBar.setAttribute('aria-valuenow', scrollPercentage);
             }
         }
         
