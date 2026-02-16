@@ -1140,16 +1140,16 @@ a.btn:focus-visible {
 .info-blob-1 {
     top: -10%;
     left: -10%;
-    width: 500px;
-    height: 500px;
+    width: min(500px, 80vw);
+    height: min(500px, 80vw);
     background: rgba(109, 151, 68, 0.15);
     border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
 }
 .info-blob-2 {
     bottom: -10%;
     right: -10%;
-    width: 600px;
-    height: 600px;
+    width: min(600px, 90vw);
+    height: min(600px, 90vw);
     background: rgba(32, 35, 74, 0.12);
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     animation-delay: -5s;
