@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/responsive-enhancements.css">
+    <link rel="stylesheet" href="css/tailwind-utilities.css">
     <link rel="icon" href="assets/img/cropped_maskottchen_32x32.webp" type="image/webp" sizes="32x32" />
     <link rel="icon" href="assets/img/cropped_maskottchen_192x192.webp" type="image/webp" sizes="192x192" />
     <link rel="apple-touch-icon" href="assets/img/cropped_maskottchen_180x180.webp" />
@@ -67,8 +69,8 @@
 </head>
 <body class="homepage">
     <a href="#main-content" class="skip-link" data-i18n="skip-link">Zum Hauptinhalt springen</a>
-    <nav class="navbar navbar-expand-lg" aria-label="Hauptnavigation" role="navigation">
-        <div class="container">
+    <nav class="navbar navbar-expand-lg sticky top-0 z-50 bg-white shadow-sm transition-all duration-300" aria-label="Hauptnavigation" role="navigation">
+        <div class="container mx-auto px-4">
             <a class="navbar-brand" href="index.html" aria-label="Zur Startseite">
                 <img src="assets/img/ibc_logo_original_navbar.webp" alt="IBC Logo" class="navbar-logo">
             </a>
@@ -179,26 +181,26 @@
                 <span class="visually-hidden" data-i18n="video-pause">Pause</span>
             </button>
             <div class="overlay"></div>
-            <div class="container js-reveal">
-                <div class="col-lg-8">
-                    <h1 class="ibc-heading" data-i18n="hero-title" aria-label="Ihre studentische Unternehmensberatung">Ihre <span class="text-gradient">studentische</span> Unternehmensberatung</h1>
-                    <p class="ibc-lead mt-4" data-i18n="hero-subtitle">Innovation, Fortschritt und Gemeinschaft, direkt aus dem Herzen des Schwarzwalds.</p>
-                    <a href="kontakt.html" class="btn btn-ibc bubbly-button magnetic-element mt-4 fade-in-up" style="transition-delay: 0.4s;" data-i18n="hero-cta">Projekt
+            <div class="container js-reveal px-4">
+                <div class="col-lg-8 max-w-full">
+                    <h1 class="ibc-heading text-3xl font-bold leading-tight mb-4" data-i18n="hero-title" aria-label="Ihre studentische Unternehmensberatung">Ihre <span class="text-gradient">studentische</span> Unternehmensberatung</h1>
+                    <p class="ibc-lead mt-4 text-lg leading-relaxed" data-i18n="hero-subtitle">Innovation, Fortschritt und Gemeinschaft, direkt aus dem Herzen des Schwarzwalds.</p>
+                    <a href="kontakt.html" class="btn btn-ibc bubbly-button magnetic-element mt-4 fade-in-up fade-delay-400 w-full sm:w-auto sm:inline-block text-center" data-i18n="hero-cta">Projekt
                         anfragen</a>
                 </div>
             </div>
         </section>
-        <section class="competencies-section py-5" id="competencies-section" aria-labelledby="competencies-heading-main">
+        <section class="competencies-section py-12" id="competencies-section" aria-labelledby="competencies-heading-main">
             <div class="competencies-ambient-layer" aria-hidden="true">
                 <div class="competencies-orb competencies-orb-1"></div>
                 <div class="competencies-orb competencies-orb-2"></div>
             </div>
-            <div class="container py-5">
-                <header class="competencies-section-header text-center reveal-fx js-reveal">
-                    <h2 id="competencies-heading-main" class="ibc-heading" data-i18n="competencies-heading" aria-label="Unsere Kompetenzen"><span class="text-gradient">Unsere</span> <span class="text-gradient">Kompetenzen</span></h2>
-                    <p class="ibc-lead" data-i18n="competencies-subtitle">Wir bringen frische Perspektiven und aktuelles Wissen in Ihr Projekt.</p>
+            <div class="container py-4 px-4 mx-auto">
+                <header class="competencies-section-header text-center reveal-fx js-reveal mb-12">
+                    <h2 id="competencies-heading-main" class="ibc-heading text-3xl font-bold mb-4" data-i18n="competencies-heading" aria-label="Unsere Kompetenzen"><span class="text-gradient">Unsere</span> <span class="text-gradient">Kompetenzen</span></h2>
+                    <p class="ibc-lead text-lg max-w-3xl mx-auto" data-i18n="competencies-subtitle">Wir bringen frische Perspektiven und aktuelles Wissen in Ihr Projekt.</p>
                 </header>
-                <div class="competencies-cards-grid" id="competenciesAccordionGroup" role="region" data-i18n-aria="competencies-section-aria-label" aria-label="Unsere Kompetenzen">
+                <div class="competencies-cards-grid grid grid-cols-1 gap-6" id="competenciesAccordionGroup" role="region" data-i18n-aria="competencies-section-aria-label" aria-label="Unsere Kompetenzen">
                     <article class="competency-card reveal-fx">
                         <div class="competency-card__image-wrapper">
                             <img src="assets/img/competencies/app-development.webp"
@@ -418,12 +420,12 @@
                 </div>
             </div>
         </section>
-        <section class="stats-section" id="stats-section" aria-labelledby="stats-heading" data-i18n-aria="stats-section-label">
-            <div class="container">
+        <section class="stats-section py-12 sm:py-16 md:py-20" id="stats-section" aria-labelledby="stats-heading" data-i18n-aria="stats-section-label">
+            <div class="container px-4 mx-auto">
                 <h2 id="stats-heading" class="visually-hidden" data-i18n="stats-heading-sr">Statistiken über das Institut</h2>
                 <div class="row g-4 justify-content-center">
                     <div class="col-xl-3 col-md-6 col-12">
-                        <div class="stat-card fade-in-up">
+                        <div class="stat-card fade-in-up hover-lift">
                             <button type="button" class="info-btn"
                                     data-bs-toggle="popover"
                                     data-i18n-popover-title="stat-advisors-title"
