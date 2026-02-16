@@ -1417,7 +1417,7 @@ button[type="submit"] {
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--gradient-hero);
+    background: linear-gradient(135deg, rgba(21, 23, 48, 0.92) 0%, rgba(32, 35, 74, 0.8) 40%, rgba(109, 151, 68, 0.7) 100%);
     z-index: -1;
 }
 #hero-section .container {
@@ -1426,7 +1426,7 @@ button[type="submit"] {
 }
 #hero-section h1 {
     color: #ffffff !important;
-    font-size: clamp(2.5rem, 6vw, 5rem) !important;
+    font-size: clamp(2rem, 4vw + 1rem, 4.5rem) !important;
     font-weight: 800;
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     letter-spacing: -0.04em;
@@ -1435,8 +1435,9 @@ button[type="submit"] {
     background: none !important;
     -webkit-text-fill-color: #ffffff !important;
     -moz-text-fill-color: #ffffff !important;
-    text-align: center !important;
-    line-height: 1.1;
+    text-align: left !important;
+    line-height: 1.15;
+    max-width: 700px;
 }
 #hero-section h1 .text-gradient,
 #hero-section .ibc-heading .text-gradient {
@@ -1454,20 +1455,18 @@ button[type="submit"] {
 }
 #hero-section p.lead,
 #hero-section .ibc-lead {
-    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    font-size: clamp(1.05rem, 1.5vw + 0.5rem, 1.35rem);
     font-weight: 400;
-    max-width: 650px;
+    max-width: 600px;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     opacity: 1;
     animation: fadeInUp 0.8s 0.4s forwards cubic-bezier(0.19, 1, 0.22, 1);
-    text-align: center !important;
-    color: rgba(255, 255, 255, 0.95) !important;
+    text-align: left !important;
+    color: rgba(255, 255, 255, 0.92) !important;
     line-height: 1.6;
 }
 #hero-section .col-lg-8 {
-    margin-left: auto !important;
-    margin-right: auto !important;
-    text-align: center !important;
+    text-align: left !important;
 }
 #hero-section .btn {
     opacity: 1;
@@ -4769,7 +4768,7 @@ footer::before {
 }
 .footer-content .row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: clamp(2rem, 5vw, 3rem);
 }
 .footer-main-widget {
@@ -4819,21 +4818,20 @@ footer::before {
     justify-content: center;
     gap: clamp(6px, 1.2vw, 10px);
     width: 100%;
-    height: clamp(44px, 6vw, 55px);
+    height: clamp(44px, 6vw, 50px);
     min-height: 44px;
-    padding: 0;
-    font-family: 'Roboto Condensed', var(--font-primary), sans-serif;
-    font-size: clamp(12px, 1.6vw, 16px);
-    font-weight: 500;
+    padding: 0 1rem;
+    font-family: 'Inter', var(--font-primary), sans-serif;
+    font-size: clamp(12px, 1.4vw, 14px);
+    font-weight: 600;
     text-decoration: none;
     text-align: center;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.02em;
     color: var(--ibc-white);
-    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
-    border-radius: clamp(16px, 3vw, 26px);
+    border-radius: 14px;
     position: relative;
     overflow: hidden;
-    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s ease;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s ease, box-shadow 0.25s ease;
 }
 .social-button-list li a::after {
     content: '';
@@ -5418,7 +5416,7 @@ h1.ibc-heading,
     font-size: clamp(2.5rem, 5.5vw, 4rem) !important;
 }
 h2.ibc-heading {
-    font-size: clamp(2.7rem, 3vw, 2.2rem) !important;
+    font-size: clamp(1.75rem, 2.5vw + 1rem, 2.75rem) !important;
 }
 h2.ibc-heading::after {
     content: '';
