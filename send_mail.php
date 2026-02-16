@@ -17,13 +17,15 @@
  * 
  * Sicherheitsfeatures:
  * - Rate Limiting pro IP-Adresse
- * - CSRF-Token-Validierung
- * - reCAPTCHA-Validierung
- * - Input-Sanitization
- * - E-Mail-Format-Validierung
+ * - CSRF-Token-Validierung mit hash_equals() (timing-safe Vergleich)
+ * - reCAPTCHA-Validierung gegen Bot-Anfragen
+ * - Input-Sanitization mit strip_tags() gegen XSS-Angriffe
+ * - E-Mail-Header-Injection-Schutz durch Entfernung von Newline-Zeichen
+ * - E-Mail-Format-Validierung mit zusätzlichen Kontrollen gegen Control-Characters
+ * - Alle Ausgaben werden mit htmlspecialchars() escaped
  * 
  * @package IBC Website
- * @version 2.0
+ * @version 2.1
  */
 
 // Fehlerausgabe im Browser deaktivieren (Sicherheit)
@@ -511,16 +513,30 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
     $result = json_decode($resultJson);
     if ($result && $result->success) {
-        $name    = filter_var(trim($_POST['name'] ?? ''), FILTER_SANITIZE_SPECIAL_CHARS);
+        // Sanitize inputs: strip HTML/PHP tags first, then trim
+        // Note: We do NOT use htmlspecialchars here yet - that will be done when outputting to HTML
+        $name    = strip_tags(trim($_POST['name'] ?? ''));
         $email   = trim($_POST['email'] ?? '');
-        $subject = filter_var(trim($_POST['subject'] ?? ''), FILTER_SANITIZE_SPECIAL_CHARS);
-        $message = filter_var(trim($_POST['message'] ?? ''), FILTER_SANITIZE_SPECIAL_CHARS);
-        $kuerzel = filter_var(trim($_POST['kuerzel'] ?? ''), FILTER_SANITIZE_SPECIAL_CHARS);
+        $subject = strip_tags(trim($_POST['subject'] ?? ''));
+        $message = strip_tags(trim($_POST['message'] ?? ''));
+        $kuerzel = strip_tags(trim($_POST['kuerzel'] ?? ''));
         $rating  = filter_var(trim($_POST['rating'] ?? ''), FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+        
+        // Prevent email header injection by removing newline characters and control characters
+        $name = str_replace(["\r", "\n", "%0a", "%0d"], '', $name);
+        $subject = str_replace(["\r", "\n", "%0a", "%0d"], '', $subject);
+        // Validate email and prevent header injection
         $emailIsValid = false;
+        // First remove any newline characters that could be used for header injection
+        $email = str_replace(["\r", "\n", "%0a", "%0d"], '', $email);
+        
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            // Additional validation: check for standard email format and no dangerous characters
             if (preg_match('/^[^@\s]+@[^@\s]+\.[^@\s]+$/', $email)) {
-                $emailIsValid = true;
+                // Ensure no control characters or header injection attempts
+                if (!preg_match('/[\r\n\x00-\x1F\x7F]/', $email)) {
+                    $emailIsValid = true;
+                }
             }
         }
         if (
@@ -1080,8 +1096,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 if ($hubspotConsent) {
                     try {
                         $nameParts = splitName($name);
-                        $phone = filter_var(trim($_POST['phone'] ?? ''), FILTER_SANITIZE_SPECIAL_CHARS);
-                        $mobilephone = filter_var(trim($_POST['mobilephone'] ?? ''), FILTER_SANITIZE_SPECIAL_CHARS);
+                        $phone = strip_tags(trim($_POST['phone'] ?? ''));
+                        $mobilephone = strip_tags(trim($_POST['mobilephone'] ?? ''));
                         $hubspotResult = createHubSpotContact([
                             'email' => $email,
                             'firstname' => $nameParts['firstname'],
