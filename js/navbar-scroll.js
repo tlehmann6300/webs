@@ -18,17 +18,41 @@ const navbar = document.querySelector('.navbar');
  * Wird bei jedem Scroll-Event ausgelöst und prüft die vertikale
  * Scroll-Position. Bei mehr als 50 Pixeln wird die 'scrolled'-Klasse
  * hinzugefügt, ansonsten entfernt.
+ * 
+ * HINWEIS: Diese Funktion ist eine Backup-Implementierung.
+ * Die Haupt-Implementierung mit Throttling und RequestAnimationFrame
+ * befindet sich in main.js. Dieser Code wird nur ausgeführt, wenn
+ * main.js nicht geladen ist.
  */
-window.addEventListener('scroll', () => {
-    // Prüfe, ob die Seite mehr als 50 Pixel nach unten gescrollt ist
-    if (window.pageYOffset > 50) {
-        // Füge 'scrolled'-Klasse hinzu für visuellen Effekt
-        navbar.classList.add('scrolled');
-    } else {
-        // Entferne 'scrolled'-Klasse, wenn oben auf der Seite
-        navbar.classList.remove('scrolled');
-    }
-});
+if (!document.querySelector('[data-navbar-scroll-loaded]')) {
+    // Füge Marker hinzu, um Duplikate zu vermeiden
+    document.documentElement.setAttribute('data-navbar-scroll-loaded', 'true');
+    
+    /**
+     * Throttle-Funktion zur Performance-Optimierung
+     * Verwendet requestAnimationFrame für optimales Timing
+     */
+    let ticking = false;
+    const handleScroll = () => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                // Prüfe, ob die Seite mehr als 50 Pixel nach unten gescrollt ist
+                if (window.scrollY > 50) {
+                    // Füge 'scrolled'-Klasse hinzu für visuellen Effekt
+                    navbar.classList.add('scrolled');
+                } else {
+                    // Entferne 'scrolled'-Klasse, wenn oben auf der Seite
+                    navbar.classList.remove('scrolled');
+                }
+                ticking = false;
+            });
+            ticking = true;
+        }
+    };
+    
+    // Verwende passive event listener für bessere Performance
+    window.addEventListener('scroll', handleScroll, { passive: true });
+}
 
 /**
  * Sprach-Element-Verwaltung
