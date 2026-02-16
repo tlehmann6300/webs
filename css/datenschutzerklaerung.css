@@ -47,8 +47,8 @@ body {
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
     border-top: 5px solid;
     border-image: linear-gradient(to right, var(--ibc-green), var(--ibc-blue)) 1;
-    opacity: 0;
-    transform: translateY(30px);
+    opacity: 1;
+    transform: none;
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
 }
 .privacy-content.is-visible {
@@ -74,6 +74,11 @@ body {
     background: linear-gradient(135deg, rgba(109, 151, 68, 0.05), rgba(0, 51, 102, 0.05));
     border-radius: 10px;
     border-left: 4px solid var(--ibc-green);
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: var(--ibc-dark);
+}
+.privacy-content h2::after {
+    display: none;
 }
 .privacy-content h2:first-of-type {
     margin-top: 0;
@@ -166,7 +171,7 @@ body {
 .privacy-content address,
 .privacy-content address p {
     padding: 1.25rem 1.5rem;
-    background-color: #f8f9fa;
+    background-color: var(--ibc-bg-light, #f8f9fa);
     border-radius: 8px;
     margin: 1.5rem 0;
     border-left: 3px solid var(--ibc-blue);

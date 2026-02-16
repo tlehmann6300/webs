@@ -4,7 +4,7 @@
 }
 .references-section {
     padding: clamp(5rem, 10vw, 8rem) 0;
-    background: var(--bg-color-light);
+    background: var(--ibc-bg-light);
 }
 .filters-wrapper {
     margin-bottom: 4rem;
@@ -38,7 +38,7 @@
     padding: 0.8rem 1.6rem;
     border: 2px solid rgba(var(--rgb-primary-blue), 0.15);
     border-radius: var(--border-radius-pill);
-    background: white;
+    background: var(--ibc-white);
     color: var(--ibc-text-secondary);
     cursor: pointer;
     transition: all var(--transition-smooth);
@@ -50,11 +50,12 @@
     transform: translateY(-2px);
     border-color: var(--ibc-green);
     color: var(--ibc-green);
+    background: rgba(var(--rgb-primary-green), 0.04);
     box-shadow: 0 6px 15px rgba(var(--rgb-primary-green), 0.15);
 }
 .filter-btn.active {
     background: linear-gradient(135deg, var(--ibc-green), var(--ibc-blue));
-    color: white;
+    color: var(--ibc-white);
     border-color: transparent;
     box-shadow: 0 4px 12px rgba(var(--rgb-primary-green), 0.3);
     transform: translateY(-1px);
@@ -65,19 +66,14 @@
 }
 .references-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
     gap: 2.5rem;
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 1rem;
 }
-@media (max-width: 400px) {
-    .references-grid {
-        grid-template-columns: 1fr;
-    }
-}
 .project-card {
-    background: #ffffff;
+    background: var(--ibc-white);
     border-radius: var(--border-radius-card);
     overflow: hidden;
     box-shadow:
@@ -88,8 +84,8 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    opacity: 0;
-    transform: translateY(30px);
+    opacity: 1;
+    transform: none;
     position: relative;
 }
 .project-card.reveal-fx.is-visible {
@@ -121,7 +117,7 @@
 }
 .project-card-image {
     height: 240px;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: linear-gradient(135deg, var(--ibc-bg-light) 0%, rgba(var(--rgb-primary-blue), 0.06) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -168,9 +164,9 @@
     top: -1rem;
     right: 1.5rem;
     background: var(--ibc-blue);
-    color: white;
+    color: var(--ibc-white);
     padding: 0.4rem 1rem;
-    border-radius: 50px;
+    border-radius: var(--border-radius-pill);
     font-size: 0.85rem;
     font-weight: 700;
     box-shadow: 0 4px 10px rgba(var(--rgb-primary-blue), 0.2);
@@ -179,6 +175,7 @@
 }
 .project-card:hover .project-year-badge {
     transform: translateY(-2px) scale(1.05);
+    background: linear-gradient(135deg, var(--ibc-green), var(--ibc-blue));
     box-shadow: 0 6px 15px rgba(var(--rgb-primary-blue), 0.3);
 }
 .project-category {
@@ -188,7 +185,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--ibc-green);
+    color: var(--ibc-green-dark);
     background: rgba(var(--rgb-primary-green), 0.1);
     border-radius: 4px;
     margin-bottom: 1rem;
@@ -209,7 +206,7 @@
     transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .project-card:hover h3 {
-    color: var(--ibc-green);
+    color: var(--ibc-green-dark);
 }
 .project-card p {
     font-size: 0.95rem;
@@ -219,11 +216,11 @@
     flex-grow: 1;
 }
 .cta-card {
-    background: #101223;
-    background: radial-gradient(circle at top right, #1a1d35 0%, #0d0f1c 100%);
+    background: var(--ibc-blue-dark);
+    background: radial-gradient(circle at top right, var(--ibc-blue) 0%, var(--ibc-blue-dark) 100%);
     border-radius: var(--border-radius-card);
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(var(--rgb-primary-blue), 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
@@ -234,7 +231,7 @@
     padding: 3rem 2rem;
     min-height: 450px;
     position: relative;
-    color: #ffffff;
+    color: var(--ibc-white);
     cursor: default;
 }
 .cta-card.reveal-fx.is-visible {
@@ -243,12 +240,12 @@
 }
 .cta-card:hover {
     transform: translateY(-12px) scale(1.02);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 20px 50px rgba(var(--rgb-primary-blue), 0.5);
     border-color: rgba(var(--rgb-primary-green), 0.6);
 }
 .cta-icon {
     font-size: 4rem;
-    color: var(--ibc-green);
+    color: var(--ibc-green-light);
     margin-bottom: 1.5rem;
     animation: float 3s ease-in-out infinite;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -265,7 +262,7 @@
     font-family: var(--font-primary);
     font-size: 2rem;
     font-weight: 800;
-    color: #ffffff;
+    color: var(--ibc-white);
     margin-bottom: 1rem;
 }
 .cta-card p {
@@ -282,7 +279,7 @@
     padding: 1rem 2rem;
     font-size: 1.05rem;
     font-weight: 700;
-    color: white;
+    color: var(--ibc-white);
     background: var(--ibc-green);
     border: none;
     border-radius: var(--border-radius-pill);
@@ -292,13 +289,13 @@
     box-shadow: 0 4px 15px rgba(var(--rgb-primary-green), 0.4);
 }
 .cta-button:hover {
-    background: #7ba84d;
+    background: var(--ibc-green-light);
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(var(--rgb-primary-green), 0.5);
-    color: white;
+    color: var(--ibc-white);
 }
 .cta-button:focus-visible {
-    outline: 3px solid white;
+    outline: 3px solid var(--ibc-white);
     outline-offset: 3px;
 }
 .cta-button .arrow-icon {
@@ -327,13 +324,84 @@
     .filters-wrapper {
         gap: 2rem;
     }
+    .filter-container {
+        gap: 0.6rem;
+    }
+    .filter-btn {
+        font-size: 0.85rem;
+        padding: 0.6rem 1.2rem;
+    }
+    .references-grid {
+        grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+        gap: 2rem;
+    }
+    .project-card-image {
+        height: 200px;
+    }
+    .project-card-content {
+        padding: 1.5rem;
+    }
     .project-card h3 {
         font-size: 1.25rem;
+    }
+    .cta-card {
+        padding: 2.5rem 1.5rem;
+        min-height: auto;
     }
     .cta-card h3 {
         font-size: 1.75rem;
     }
+    .cta-card p {
+        font-size: 1rem;
+    }
     .cta-icon {
         font-size: 3rem;
+    }
+    .project-card:hover {
+        transform: translateY(-6px) scale(1.01);
+    }
+}
+@media (max-width: 480px) {
+    .references-section {
+        padding: 3rem 0;
+    }
+    .filters-wrapper {
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+    }
+    .filter-group-title {
+        font-size: 0.95rem;
+    }
+    .filter-btn {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+    }
+    .references-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 0.5rem;
+    }
+    .project-card-image {
+        height: 180px;
+        padding: 1rem;
+    }
+    .project-card-content {
+        padding: 1.25rem;
+    }
+    .project-card h3 {
+        font-size: 1.15rem;
+    }
+    .project-card p {
+        font-size: 0.9rem;
+    }
+    .cta-card {
+        padding: 2rem 1.25rem;
+    }
+    .cta-card h3 {
+        font-size: 1.5rem;
+    }
+    .cta-button {
+        padding: 0.85rem 1.5rem;
+        font-size: 0.95rem;
     }
 }

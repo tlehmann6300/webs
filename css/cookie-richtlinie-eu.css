@@ -61,9 +61,16 @@ body {
     margin-bottom: 2rem;
     margin-top: 3.5rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 1px solid rgba(var(--rgb-primary-blue, 32, 35, 74), 0.08);
     display: flex;
     align-items: center;
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: var(--ibc-dark);
+}
+.cookie-content h2::after {
+    display: none;
 }
 .cookie-content h2 .icon {
     color: var(--ibc-green);
@@ -140,7 +147,7 @@ body {
 }
 .cookie-content table td {
     padding: 0.875rem 1rem;
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 1px solid rgba(var(--rgb-primary-blue, 32, 35, 74), 0.08);
 }
 .cookie-content table tbody tr:hover {
     background-color: rgba(109, 151, 68, 0.05);
