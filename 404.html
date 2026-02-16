@@ -5,9 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="404-title">404 – Seite nicht gefunden | Institut für Business Consulting e.V.</title>
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'ibc-green': '#6D9744',
+              'ibc-green-light': '#7db356',
+              'ibc-green-dark': '#355B2C',
+              'ibc-blue': '#20234A',
+              'ibc-blue-dark': '#151730',
+              'ibc-blue-mid': '#4d5061',
+              'ibc-accent-orange': '#ef9e27',
+              'ibc-accent-blue': '#3481b9',
+            }
+          }
+        }
+      }
+    </script>
   <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
   <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive-utilities.css">
+    <link rel="stylesheet" href="css/responsive-enhancements.css">
   <link rel="stylesheet" href="css/404.css">
   <link rel="icon" href="assets/img/cropped_maskottchen_32x32.webp" type="image/webp" sizes="32x32" />
   <link rel="icon" href="assets/img/cropped_maskottchen_192x192.webp" type="image/webp" sizes="192x192" />

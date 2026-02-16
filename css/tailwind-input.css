@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Tailwind utilities */
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-ibc-blue to-ibc-green bg-clip-text text-transparent;
+  }
+  
+  .shadow-premium {
+    box-shadow: 0 10px 40px rgba(0,0,0,.15), 0 2px 8px rgba(0,0,0,.08);
+  }
+}
