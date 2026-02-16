@@ -573,10 +573,15 @@ img {
 }
 @media (max-width: 768px) {
   .container {
-    padding: 0 15px;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 @media (max-width: 576px) {
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
   .btn {
     width: 100%;
   }
