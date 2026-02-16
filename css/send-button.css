@@ -1,11 +1,11 @@
 
 :root {
-  --btn-grad-1: #ff7a18;
-  --btn-grad-2: #af002d;
+  --btn-grad-1: var(--ibc-green, #6D9744);
+  --btn-grad-2: var(--ibc-green-dark, #355B2C);
   --btn-text: #ffffff;
   --success-bg: #16a34a;
-  --error-bg: #dc2626;
-  --focus-ring: #6366f1;
+  --error-bg: #c0392b;
+  --focus-ring: var(--ibc-green-light, #7db356);
   --ibc-green: #6D9744;
   --ease-elastic: cubic-bezier(0.2, 0.8, 0.2, 1);
   --transition-speed: 0.3s;
@@ -40,7 +40,7 @@
 }
 @media (hover: hover) {
   .send-button:hover {
-    background-color: #4a7736;
+    background-color: var(--ibc-green-dark, #355B2C);
     transform: translateY(-1px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
@@ -51,7 +51,7 @@
   box-shadow: none;
 }
 .send-button:disabled {
-  background-color: #aaa;
+  background-color: var(--ibc-blue-mid, #4d5061);
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
