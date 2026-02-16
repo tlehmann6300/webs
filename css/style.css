@@ -313,7 +313,7 @@ a:not(.btn):not(.nav-link):not(.social-button-list a):not(.footer-logo a) {
   --shadow-card-hover: 0 20px 50px rgba(var(--rgb-primary-blue), 0.12), 0 8px 20px rgba(var(--rgb-primary-green), 0.08);
 }
 .reveal-fx {
-    opacity: 0;
+    opacity: 1;
     transform: translateY(40px) scale(0.98);
     filter: blur(10px);
     will-change: opacity, transform, filter;
@@ -327,6 +327,19 @@ a:not(.btn):not(.nav-link):not(.social-button-list a):not(.footer-logo a) {
     opacity: 1;
     transform: translateY(0) scale(1);
     filter: blur(0);
+}
+.no-js .reveal-fx,
+html:not(.js-enabled) .reveal-fx {
+    opacity: 1;
+    transform: none;
+    filter: none;
+}
+@media (scripting: none) {
+    .reveal-fx {
+        opacity: 1;
+        transform: none;
+        filter: none;
+    }
 }
 .highlight-gradient {
     background: linear-gradient(135deg, var(--ibc-blue) 0%, var(--ibc-green) 100%);
@@ -907,8 +920,8 @@ section.bg-light {
     position: relative;
     z-index: 1;
     display: inline-block;
-    opacity: 0;
-    transform: translateY(30px) scale(0.95);
+    opacity: 1;
+    transform: none;
     transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1),
                 transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
@@ -1325,6 +1338,19 @@ button[type="submit"] {
         font-size: 1rem;
     }
 }
+@media (max-width: 768px) {
+    #hero-section {
+        min-height: 70vh;
+        padding: 2rem 0;
+    }
+    #hero-section h1 {
+        font-size: clamp(1.75rem, 5vw, 2.5rem) !important;
+        line-height: 1.2;
+    }
+    #hero-section .col-lg-8 {
+        padding: 0 1rem;
+    }
+}
 #hero-section .overlay {
     position: absolute;
     top: 0;
@@ -1400,8 +1426,8 @@ button[type="submit"] {
     will-change: transform, box-shadow;
     transition: transform 0.35s var(--ease-out-expo),
         box-shadow 0.4s var(--ease-out-expo), opacity 0.8s var(--ease-out-quad);
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: 1;
+    transform: none;
 }
 .service-card.is-visible {
     opacity: 1;
@@ -1527,7 +1553,7 @@ button[type="submit"] {
     margin-top: auto;
 }
 .info-card .btn-outline-ibc {
-    border: none !important;
+    border: 2px solid var(--ibc-blue) !important;
 }
 .stats-section {
     background: var(--gradient-primary);
@@ -1812,14 +1838,23 @@ button[type="submit"] {
     color: var(--ibc-text-primary);
 }
 .value-card.fade-in-up {
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: 1;
+    transform: none;
 }
 .value-card.fade-in-up.is-visible {
     opacity: 1;
     transform: translateY(0);
     transition: opacity 0.8s var(--ease-out-quad), transform 0.8s var(--ease-out-quad);
     transition-delay: var(--animation-delay, 0s);
+}
+footer, footer * {
+    color: inherit;
+}
+footer a {
+    color: rgba(255,255,255,0.8);
+}
+footer a:hover {
+    color: #ffffff;
 }
 footer {
     background-color: var(--ibc-dark);
@@ -1904,7 +1939,7 @@ a:hover {
     }
 }
 .animate-on-scroll {
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.8s var(--ease-out-quad), transform 0.8s var(--ease-out-quad);
     will-change: opacity, transform;
 }
@@ -1925,8 +1960,8 @@ a:hover {
     transform: translate(0, 0) scale(1);
 }
 .fade-in-up {
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: 1;
+    transform: none;
 }
 .fade-in-up.is-visible {
     opacity: 1;
@@ -2215,8 +2250,8 @@ textarea.form-control:focus {
 .service-card:nth-child(5) { --animation-delay: 0.5s; }
 .service-card:nth-child(6) { --animation-delay: 0.6s; }
 .fade-in-up {
-    opacity: 0;
-    transform: translateY(30px);
+    opacity: 1;
+    transform: none;
     transition: opacity 0.9s cubic-bezier(0.19, 1, 0.22, 1),
                 transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
 }
@@ -5090,7 +5125,7 @@ img[alt=""],
     animation: none !important;
 }
 .timeline-item {
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.6s ease-out;
 }
 .timeline-item.is-visible {
@@ -5340,8 +5375,8 @@ h2.ibc-heading::after {
 }
 .ibc-heading .word {
     display: inline-block;
-    transform: translateY(110%) rotate(5deg);
-    opacity: 0;
+    transform: none;
+    opacity: 1;
     transform-origin: left top;
     will-change: transform, opacity;
 }
@@ -5370,8 +5405,8 @@ h2.ibc-heading::after {
     text-align: center;
     max-width: 65ch;
     margin: 0 auto 2rem auto;
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: 1;
+    transform: none;
 }
 @media (max-width: 768px) {
     .ibc-lead {
