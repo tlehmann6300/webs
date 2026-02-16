@@ -365,6 +365,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: var(--transition-smooth);
   overflow: visible;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  font-weight: 500;
 }
 .btn-ibc {
     background: var(--ibc-blue);
@@ -391,6 +392,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 /* Modern shadow class - Tailwind-like shadow-lg */
 .modern-shadow {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Apply modern shadow to all cards */
+.card,
+.service-card,
+.value-card,
+.member-card,
+.team-card,
+.info-card,
+.partner-card,
+.competency-card,
+.angebot-card {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
@@ -5925,7 +5939,7 @@ button:focus-visible,
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -5935,7 +5949,7 @@ button:focus-visible,
     transition: all .4s var(--ease-smooth);
 }
 body.homepage .navbar:not(.scrolled) {
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.5);
     box-shadow: none;
     backdrop-filter: blur(10px);
 }
