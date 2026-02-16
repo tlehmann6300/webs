@@ -118,7 +118,7 @@
 .btn-primary {
   padding: clamp(0.875rem, 2.5vw, 1.125rem) clamp(1.75rem, 5vw, 2.5rem);
   font-size: clamp(0.9375rem, 2vw, 1.0625rem);
-  border-radius: var(--border-radius-soft);
+  border-radius: var(--border-radius-pill);
   font-weight: 600;
   text-decoration: none;
   display: inline-flex;
@@ -178,7 +178,6 @@
 
 /* Enhanced Card Responsiveness */
 .card,
-.competency-card,
 .service-card,
 .angebot-card {
   border-radius: var(--border-radius-card);
@@ -193,7 +192,6 @@
 }
 
 .card:hover,
-.competency-card:hover,
 .service-card:hover,
 .angebot-card:hover {
   transform: translateY(-8px);
@@ -203,7 +201,6 @@
 
 @media (max-width: 767.98px) {
   .card,
-  .competency-card,
   .service-card,
   .angebot-card {
     padding: 1.5rem;
@@ -211,7 +208,6 @@
   }
   
   .card:hover,
-  .competency-card:hover,
   .service-card:hover,
   .angebot-card:hover {
     transform: translateY(-4px);
@@ -382,9 +378,8 @@ img {
 }
 
 .img-fluid {
-  width: 100%;
+  max-width: 100%;
   height: auto;
-  object-fit: cover;
 }
 
 /* Enhanced Modal Responsiveness */
