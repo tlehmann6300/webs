@@ -314,8 +314,8 @@ a:not(.btn):not(.nav-link):not(.social-button-list a):not(.footer-logo a) {
 }
 .reveal-fx {
     opacity: 1;
-    transform: translateY(40px) scale(0.98);
-    filter: blur(10px);
+    transform: none;
+    filter: none;
     will-change: opacity, transform, filter;
     transition:
         opacity var(--anim-duration) var(--ease-premium),

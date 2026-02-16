@@ -624,7 +624,7 @@ a.btn:focus-visible {
 .reveal-fx {
     opacity: 1;
     transform: none;
-    filter: blur(10px);
+    filter: none;
     will-change: opacity, transform, filter;
     transition:
         opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1),
