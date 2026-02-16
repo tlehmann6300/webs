@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Build outputs
+css/tailwind-output.css
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Backup files
+*.bak
+
+# Logs
+*.log
+npm-debug.log*
