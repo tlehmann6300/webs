@@ -27,10 +27,16 @@
 /* ===== HERO SECTION RESPONSIVE ===== */
 #hero-section {
   min-height: 100vh;
-  min-height: 100dvh; /* Dynamic viewport height for mobile */
   display: flex;
   align-items: center;
   position: relative;
+}
+
+/* Use dynamic viewport height where supported for better mobile experience */
+@supports (min-height: 100dvh) {
+  #hero-section {
+    min-height: 100dvh;
+  }
 }
 
 #hero-section .container {
