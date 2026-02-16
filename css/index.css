@@ -1445,13 +1445,7 @@ a.btn:focus-visible {
     font-size: 1.15rem;
     color: var(--competencies-color-text);
 }
-.competencies-cards-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2.5rem;
-    position: relative;
-    z-index: 1;
-}
+/* Competencies section cards - now using Bootstrap grid, remove custom grid */
 .competency-card {
     background: var(--ibc-white, #ffffff);
     border-radius: var(--border-radius-card, 24px);
@@ -1637,19 +1631,7 @@ a.btn:focus-visible {
 .competency-btn-clean:hover i {
     transform: translateX(5px);
 }
-@media (max-width: 1024px) {
-    .competencies-cards-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-@media (max-width: 700px) {
-    .competencies-cards-grid {
-        grid-template-columns: 1fr;
-    }
-    .competencies-section-header {
-        margin-bottom: 3rem;
-    }
-}
+/* Remove responsive grid overrides since Bootstrap handles it */
 @media (max-width: 600px) {
     .competencies-ambient-layer {
         display: none;
