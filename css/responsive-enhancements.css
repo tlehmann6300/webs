@@ -168,21 +168,28 @@ main,
 /* ===== COMPETENCY CARDS RESPONSIVE ===== */
 .competencies-cards-grid {
   display: grid;
-  gap: 1.5rem;
+  gap: 1rem;
   grid-template-columns: repeat(2, 1fr);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .competencies-cards-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.75rem;
+    gap: 1.25rem;
   }
 }
 
 @media (min-width: 1024px) {
   .competencies-cards-grid {
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .competencies-cards-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
   }
 }
 
