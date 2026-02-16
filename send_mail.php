@@ -513,7 +513,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
     $result = json_decode($resultJson);
     if ($result && $result->success) {
-        // Sanitize inputs: strip HTML/PHP tags first, then trim
+        // Sanitize inputs: trim first, then strip HTML/PHP tags
         // Note: We do NOT use htmlspecialchars here yet - that will be done when outputting to HTML
         $name    = strip_tags(trim($_POST['name'] ?? ''));
         $email   = trim($_POST['email'] ?? '');
@@ -523,12 +523,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $rating  = filter_var(trim($_POST['rating'] ?? ''), FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
         
         // Prevent email header injection by removing newline characters and control characters
-        $name = str_replace(["\r", "\n", "%0a", "%0d"], '', $name);
-        $subject = str_replace(["\r", "\n", "%0a", "%0d"], '', $subject);
+        // Remove both lowercase and uppercase URL-encoded variants
+        $name = str_replace(["\r", "\n", "%0a", "%0A", "%0d", "%0D"], '', $name);
+        $subject = str_replace(["\r", "\n", "%0a", "%0A", "%0d", "%0D"], '', $subject);
         // Validate email and prevent header injection
         $emailIsValid = false;
-        // First remove any newline characters that could be used for header injection
-        $email = str_replace(["\r", "\n", "%0a", "%0d"], '', $email);
+        // Remove newline characters (both raw and URL-encoded with both cases) that could be used for header injection
+        $email = str_replace(["\r", "\n", "%0a", "%0A", "%0d", "%0D"], '', $email);
         
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             // Additional validation: check for standard email format and no dangerous characters
