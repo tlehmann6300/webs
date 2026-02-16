@@ -37,7 +37,7 @@ body {
   outline: none;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: contain;
-  overscroll-behavior-x: none;
+  overscroll-behavior-x: contain;
   /* Better font rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
