@@ -27,8 +27,6 @@ document.addEventListener('DOMContentLoaded', function () {
      * 
      * Der Observer überwacht, wann Elemente in den sichtbaren Bereich
      * des Viewports scrollen und löst dann die Animation aus.
-     * Optimiert: Beendet die Beobachtung nach der Animation, um
-     * Flickern beim Hoch/Runter-Scrollen zu verhindern.
      * 
      * @type {IntersectionObserver}
      */
@@ -56,13 +54,6 @@ document.addEventListener('DOMContentLoaded', function () {
                  * Die CSS-Transition animiert Opacity und Transform
                  */
                 entry.target.classList.add('is-visible');
-                
-                /**
-                 * Beende Beobachtung nach Animation
-                 * Dies verhindert, dass die Animation beim Hoch/Runter-Scrollen
-                 * wiederholt wird und flickert. Die Animation feuert nur einmal.
-                 */
-                observer.unobserve(entry.target);
             }
         });
     }, {

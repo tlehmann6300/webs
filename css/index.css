@@ -137,11 +137,11 @@ a.btn:focus-visible {
 .core-values-section .value-item,
 .value-item,
 .value-card {
-    background: linear-gradient(135deg, #ffffff 0%, var(--ibc-bg-light) 100%) !important;
-    border: 1px solid rgba(59, 130, 246, 0.1) !important;
-    border-radius: 20px !important;
-    padding: 2.5rem !important;
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+    border: 1px solid rgba(93, 167, 57, 0.1) !important;
+    border-radius: 16px !important;
+    padding: 2rem !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
     position: relative;
     overflow: visible !important;
     display: flex !important;
@@ -155,7 +155,7 @@ a.btn:focus-visible {
     left: 0;
     width: 100%;
     height: 4px;
-    background: var(--gradient-primary);
+    background: linear-gradient(90deg, var(--ibc-green), var(--ibc-blue));
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.4s ease;
@@ -163,7 +163,7 @@ a.btn:focus-visible {
 .value-icon {
     font-size: 2.5rem !important;
     margin-right: 40px;
-    background: var(--gradient-primary) !important;
+    background: linear-gradient(135deg, var(--ibc-green), var(--ibc-blue)) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
     background-clip: text !important;
@@ -464,17 +464,17 @@ a.btn:focus-visible {
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    background: var(--gradient-success);
+    background: linear-gradient(135deg, var(--ibc-green, #6D9744) 0%, var(--ibc-green-light, #7db356) 100%);
     text-decoration: none !important;
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: var(--shadow-glow-green);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 4px 15px rgba(109, 151, 68, 0.3);
     margin-top: auto;
     z-index: 2;
 }
 .ethereal-button:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 4px var(--ibc-white, #ffffff), 0 0 0 7px var(--ibc-green);
+    box-shadow: 0 0 0 4px var(--ibc-white, #ffffff), 0 0 0 7px var(--ibc-green, #6D9744);
 }
 .ethereal-button::before {
     content: "";
@@ -494,7 +494,7 @@ a.btn:focus-visible {
     position: absolute;
     inset: 0;
     border-radius: 50px;
-    background: linear-gradient(90deg, var(--ibc-green), var(--ibc-green-light), var(--ibc-green));
+    background: linear-gradient(90deg, var(--ibc-green, #6D9744), var(--ibc-green-light, #7db356), var(--ibc-green, #6D9744));
     background-size: 300%;
     opacity: 0;
     filter: blur(15px);
@@ -511,9 +511,9 @@ a.btn:focus-visible {
     gap: 8px;
 }
 .ethereal-button:hover {
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: var(--shadow-hover), var(--shadow-glow-green);
-    background: var(--gradient-success);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(109, 151, 68, 0.5);
+    background: linear-gradient(135deg, var(--ibc-green-light, #7db356) 0%, var(--ibc-green, #6D9744) 100%);
 }
 .ethereal-button:hover::before {
     left: 130%;
@@ -1140,16 +1140,16 @@ a.btn:focus-visible {
 .info-blob-1 {
     top: -10%;
     left: -10%;
-    width: min(500px, 80vw);
-    height: min(500px, 80vw);
+    width: 500px;
+    height: 500px;
     background: rgba(109, 151, 68, 0.15);
     border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
 }
 .info-blob-2 {
     bottom: -10%;
     right: -10%;
-    width: min(600px, 90vw);
-    height: min(600px, 90vw);
+    width: 600px;
+    height: 600px;
     background: rgba(32, 35, 74, 0.12);
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     animation-delay: -5s;
@@ -1445,7 +1445,13 @@ a.btn:focus-visible {
     font-size: 1.15rem;
     color: var(--competencies-color-text);
 }
-/* Competencies section cards - now using Bootstrap grid, remove custom grid */
+.competencies-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+    position: relative;
+    z-index: 1;
+}
 .competency-card {
     background: var(--ibc-white, #ffffff);
     border-radius: var(--border-radius-card, 24px);
@@ -1631,7 +1637,19 @@ a.btn:focus-visible {
 .competency-btn-clean:hover i {
     transform: translateX(5px);
 }
-/* Remove responsive grid overrides since Bootstrap handles it */
+@media (max-width: 1024px) {
+    .competencies-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 700px) {
+    .competencies-cards-grid {
+        grid-template-columns: 1fr;
+    }
+    .competencies-section-header {
+        margin-bottom: 3rem;
+    }
+}
 @media (max-width: 600px) {
     .competencies-ambient-layer {
         display: none;

@@ -1,11 +1,11 @@
 # 1. GRUNDLEGENDE SICHERHEIT & OPTIONEN
 # 2. UMLEITUNGEN
 # 3. FEHLERSEITEN
-# 4. HTTPS ERZWINGEN
+# 4. HTTPS & CANONICAL REDIRECTS
 # 5. SCHUTZ SENSIBLER DATEIEN
 # 6. SECURITY HEADERS
-# 7. MIME-TYPES & CACHING
-# 8. SPEZIELLE UMLEITUNGEN
+# 7. WARTUNG & SPEZIELLE REDIRECTS
+# 8. PERFORMANCE (MIME-TYPES & CACHING)
 
 # ----------------------------------------------------------------------
 # 1. GRUNDLEGENDE SICHERHEIT & OPTIONEN
@@ -48,7 +48,7 @@ ErrorDocument 500 /500.html
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    # Erzwingt HTTPS - alle HTTP-Anfragen werden auf HTTPS umgeleitet
+    # Erzwingt HTTPS
     RewriteCond %{HTTPS} off
     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
@@ -62,30 +62,18 @@ ErrorDocument 500 /500.html
 # 5. SCHUTZ SENSIBLER DATEIEN & ORDNER
 # ----------------------------------------------------------------------
 
-# Sperrt versteckte Dateien (.env, .git, .gitignore usw.)
-# Ausnahme: .well-known (für SSL/ACME-Challenge)
+# Sperrt versteckte Dateien (.env, .git usw.)
+# Ausnahme: .well-known (für SSL)
 <FilesMatch "^\\.(?!well-known)">
     Require all denied
 </FilesMatch>
 
-# Zusätzlicher expliziter Schutz für .env und .git
-<FilesMatch "^\.env">
-    Require all denied
-</FilesMatch>
-
-<DirectoryMatch "\.git">
-    Require all denied
-</DirectoryMatch>
-
-# Sperrt typische sensible Dateien (composer.json, composer.lock, etc.)
-<FilesMatch "(composer\.json|composer\.lock|package\.json|README\.md|LICENSE|CHANGELOG\.md|.*\.sql|.*\.log|.*\.ini)$">
-    Require all denied
-</FilesMatch>
+# Sperrt typische sensible Dateien
+RewriteRule ^(composer\.json|composer\.lock|package\.json|README\.md|LICENSE|CHANGELOG\.md|.*\.sql|.*\.log|.*\.ini)$ - [F,L]
 
 # Sperrt den privaten Ordner komplett
-<DirectoryMatch "(^|/)private/">
-    Require all denied
-</DirectoryMatch>
+RewriteRule ^private/ - [F,L]
+RewriteRule ^kuerzel/private/ - [F,L]
 
 # OPTIONAL: config.php sperren (nur wenn nie direkt aufgerufen!)
 # <Files "config.php">
@@ -150,10 +138,14 @@ ErrorDocument 500 /500.html
 </IfModule>
 
 # ----------------------------------------------------------------------
-# 8. SPEZIELLE UMLEITUNGEN
+# 8. PERFORMANCE: MIME-TYPES & CACHING
 # ----------------------------------------------------------------------
 <IfModule mod_rewrite.c>
     RewriteEngine On
+
+    # Erzwingt HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
     # referenzen.html auf maintenance.html umleiten
     RewriteRule ^referenzen\.html$ /maintenance.html [R=302,L]

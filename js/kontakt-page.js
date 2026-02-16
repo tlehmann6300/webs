@@ -12,7 +12,7 @@
                     nav.classList.remove('scrolled');
                 }
             };
-            window.addEventListener('scroll', handleNavState, { passive: true });
+            window.addEventListener('scroll', handleNavState);
             handleNavState();
         }
         const observer = new IntersectionObserver((entries) => {

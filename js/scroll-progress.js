@@ -1,5 +1,5 @@
 /**
- * Scroll-Fortschrittsanzeige-Modul (Performance-optimiert)
+ * Scroll-Fortschrittsanzeige-Modul
  * 
  * Dieses Modul erstellt eine visuelle Fortschrittsanzeige am oberen Bildschirmrand,
  * die zeigt, wie weit der Benutzer durch die Seite gescrollt hat.
@@ -7,17 +7,10 @@
  * 
  * Hauptfunktionen:
  * - Dynamische Erstellung der Fortschrittsleiste
- * - Echtzeit-Update beim Scrollen mit optimiertem Throttling
+ * - Echtzeit-Update beim Scrollen
  * - ARIA-Unterstützung für Screenreader
  * - Responsive Berechnung für verschiedene Bildschirmgrößen
  * - Passive Event-Listener für bessere Performance
- * - RequestAnimationFrame für ruckelfreie Animationen
- * 
- * Performance-Optimierungen:
- * - Verwendet requestAnimationFrame für Frame-synchrone Updates
- * - Passive Event-Listener verhindern Scroll-Blocking
- * - Throttling verhindert überflüssige Berechnungen
- * - Optimierte DOM-Manipulation (nur bei Änderungen)
  * 
  * @module ScrollProgress
  */
@@ -58,16 +51,10 @@
         document.body.insertBefore(progressBar, document.body.firstChild);
         
         /**
-         * Letzte bekannte Scroll-Prozentzahl für Optimierung
-         * Verhindert unnötige DOM-Updates bei gleichen Werten
-         */
-        let lastScrollPercentage = -1;
-        
-        /**
          * Aktualisiert die Fortschrittsleiste basierend auf Scroll-Position
          * 
-         * Diese optimierte Funktion berechnet den Scroll-Fortschritt als Prozentsatz
-         * und aktualisiert die Breite der Fortschrittsleiste nur bei Änderungen.
+         * Diese Funktion berechnet den Scroll-Fortschritt als Prozentsatz
+         * und aktualisiert die Breite der Fortschrittsleiste entsprechend.
          */
         function updateProgress() {
             // Hole die Höhe des sichtbaren Viewports
@@ -77,7 +64,7 @@
             const documentHeight = document.documentElement.scrollHeight;
             
             // Hole aktuelle Scroll-Position von oben (Cross-Browser-kompatibel)
-            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
             /**
              * Berechne die scrollbare Höhe
@@ -106,87 +93,30 @@
             scrollPercentage = Math.min(Math.max(scrollPercentage, 0), 100);
             
             /**
-             * Runde auf ganze Zahl für optimale Performance
-             * Browser rendert Prozentsätze ohnehin gerundet
+             * Setze die Breite der Fortschrittsleiste
+             * Die CSS-Transition sorgt für sanfte Übergänge
              */
-            scrollPercentage = Math.round(scrollPercentage);
+            progressBar.style.width = scrollPercentage + '%';
             
             /**
-             * Aktualisiere DOM nur wenn sich der Wert geändert hat
-             * Dies reduziert unnötige Reflows und Repaints
+             * Update ARIA-Attribut für Screenreader
+             * Math.round rundet auf ganze Zahlen für bessere Lesbarkeit
              */
-            if (scrollPercentage !== lastScrollPercentage) {
-                lastScrollPercentage = scrollPercentage;
-                
-                /**
-                 * Setze die Breite der Fortschrittsleiste
-                 * Verwendet transform für GPU-beschleunigte Animation (optional)
-                 * oder width für einfachere Implementation
-                 */
-                progressBar.style.width = scrollPercentage + '%';
-                
-                /**
-                 * Update ARIA-Attribut für Screenreader
-                 * Bereits als ganze Zahl gerundet
-                 */
-                progressBar.setAttribute('aria-valuenow', scrollPercentage);
-            }
-        }
-        
-        /**
-         * Throttling-Variable für requestAnimationFrame
-         * Verhindert mehrfache gleichzeitige Updates für optimale Performance
-         */
-        let ticking = false;
-        
-        /**
-         * Throttled Scroll-Handler mit requestAnimationFrame
-         * Stellt sicher, dass Updates nur einmal pro Frame erfolgen
-         */
-        function handleScroll() {
-            if (!ticking) {
-                requestAnimationFrame(() => {
-                    updateProgress();
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        }
-        
-        /**
-         * Throttling-Variable für Resize-Events
-         * Verhindert mehrfache gleichzeitige Updates bei Fenstergrößen-Änderungen
-         */
-        let resizeTicking = false;
-        
-        /**
-         * Throttled Resize-Handler mit requestAnimationFrame
-         * Stellt sicher, dass Updates nur einmal pro Frame erfolgen
-         */
-        function handleResize() {
-            if (!resizeTicking) {
-                requestAnimationFrame(() => {
-                    updateProgress();
-                    resizeTicking = false;
-                });
-                resizeTicking = true;
-            }
+            progressBar.setAttribute('aria-valuenow', Math.round(scrollPercentage));
         }
         
         /**
          * Event-Listener für Scroll-Events
          * passive: true verhindert Blocking für bessere Performance
-         * Verwendet throttled Handler für optimierte Performance
          */
-        window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('scroll', updateProgress, { passive: true });
         
         /**
          * Event-Listener für Resize-Events
          * Aktualisiert Fortschritt bei Fenstergrößen-Änderung
          * (z.B. beim Drehen eines Mobilgeräts)
-         * Verwendet throttled Handler für optimierte Performance
          */
-        window.addEventListener('resize', handleResize, { passive: true });
+        window.addEventListener('resize', updateProgress, { passive: true });
         
         // Initiale Berechnung beim Laden der Seite
         updateProgress();

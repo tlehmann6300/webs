@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
             nav.classList.remove('scrolled');
         }
     };
-    window.addEventListener('scroll', handleNavState, { passive: true });
+    window.addEventListener('scroll', handleNavState);
     handleNavState();
     if (!prefersReducedMotion) {
         const observer = new IntersectionObserver((entries) => {
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
                 ticking = true;
             }
-        }, { passive: true });
+        });
         updateTimeline();
     }
 });

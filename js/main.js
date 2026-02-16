@@ -532,7 +532,7 @@ const initButtonAnimations = () => {
     document.body.appendChild(scrollProgress);
     const updateProgress = () => {
       const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = (window.scrollY / windowHeight) * 100;
+      const scrolled = (window.pageYOffset / windowHeight) * 100;
       scrollProgress.style.width = scrolled + '%';
     };
     const throttledProgress = throttle(() => {
@@ -1246,22 +1246,10 @@ const initButtonAnimations = () => {
       if (firstFocusable) {
         setTimeout(() => firstFocusable.focus(), 100);
       }
-      // Verhindere Hintergrund-Scrollen wenn Mobile-Menü geöffnet ist
-      // Speichere aktuelle Scroll-Position im data-Attribut
-      document.body.dataset.scrollPosition = window.scrollY.toString();
-      document.body.style.top = `-${window.scrollY}px`;
-      document.body.classList.add('mobile-menu-open');
     });
     navbarCollapse.addEventListener('hidden.bs.collapse', () => {
       document.removeEventListener('keydown', handleFocusTrap);
       navbarToggler.focus();
-      // Stelle Hintergrund-Scrollen wieder her
-      document.body.classList.remove('mobile-menu-open');
-      const scrollY = parseInt(document.body.dataset.scrollPosition || '0', 10);
-      document.body.style.top = '';
-      // Stelle Scroll-Position wieder her
-      window.scrollTo(0, scrollY);
-      delete document.body.dataset.scrollPosition;
     });
   };
   document.addEventListener('DOMContentLoaded', () => {
@@ -1320,7 +1308,7 @@ const initButtonAnimations = () => {
     const navbar = document.querySelector('.navbar');
     if (!navbar) return;
     const updateNavbar = () => {
-      if (window.scrollY > 50) {
+      if (window.pageYOffset > 50) {
         navbar.classList.add('scrolled');
       } else {
         navbar.classList.remove('scrolled');

@@ -24,30 +24,9 @@
     <link rel="alternate" hreflang="fr" href="https://business-consulting.de/index.html?lang=fr">
     <link rel="alternate" hreflang="x-default" href="https://business-consulting.de/index.html">
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              'ibc-green': '#6D9744',
-              'ibc-green-light': '#7db356',
-              'ibc-green-dark': '#355B2C',
-              'ibc-blue': '#20234A',
-              'ibc-blue-dark': '#151730',
-              'ibc-blue-mid': '#4d5061',
-              'ibc-accent-orange': '#ef9e27',
-              'ibc-accent-blue': '#3481b9',
-            }
-          }
-        }
-      }
-    </script>
     <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive-utilities.css">
-    <link rel="stylesheet" href="css/responsive-enhancements.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="icon" href="assets/img/cropped_maskottchen_32x32.webp" type="image/webp" sizes="32x32" />
     <link rel="icon" href="assets/img/cropped_maskottchen_192x192.webp" type="image/webp" sizes="192x192" />
@@ -91,7 +70,7 @@
     <nav class="navbar navbar-expand-lg" aria-label="Hauptnavigation" role="navigation">
         <div class="container">
             <a class="navbar-brand" href="index.html" aria-label="Zur Startseite">
-                <img src="assets/img/ibc_logo_original_navbar.webp" alt="IBC Logo" class="navbar-logo img-fluid">
+                <img src="assets/img/ibc_logo_original_navbar.webp" alt="IBC Logo" class="navbar-logo">
             </a>
             <button class="navbar-toggler"
                     type="button"
@@ -135,7 +114,7 @@
                                 aria-haspopup="true"
                                 aria-label="Sprache wählen"
                                 data-i18n-aria="navbar-lang-toggle">
-                            <img id="activeFlag" src="assets/img/flags/de.svg" alt="" class="flag-img img-fluid" aria-hidden="true">
+                            <img id="activeFlag" src="assets/img/flags/de.svg" alt="" class="flag-img" aria-hidden="true">
                             <span class="d-lg-none ms-2" data-i18n="navbar-lang-change">Sprache ändern</span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end lang-dropdown" role="menu" aria-label="Sprachauswahl" data-i18n-aria="navbar-lang-menu">
@@ -147,7 +126,7 @@
                                    data-lang="de"
                                    aria-current="true"
                                    aria-label="Deutsch">
-                                    <img src="assets/img/flags/de.svg" alt="" class="flag-img img-fluid" aria-hidden="true" loading="lazy">
+                                    <img src="assets/img/flags/de.svg" alt="" class="flag-img" aria-hidden="true">
                                     <span>Deutsch</span>
                                 </a>
                             </li>
@@ -158,7 +137,7 @@
                                    data-flag="assets/img/flags/gb.svg"
                                    data-lang="en"
                                    aria-label="English">
-                                    <img src="assets/img/flags/gb.svg" alt="" class="flag-img img-fluid" aria-hidden="true" loading="lazy">
+                                    <img src="assets/img/flags/gb.svg" alt="" class="flag-img" aria-hidden="true">
                                     <span>English</span>
                                 </a>
                             </li>
@@ -169,7 +148,7 @@
                                    data-flag="assets/img/flags/fr.svg"
                                    data-lang="fr"
                                    aria-label="Français">
-                                    <img src="assets/img/flags/fr.svg" alt="" class="flag-img img-fluid" aria-hidden="true" loading="lazy">
+                                    <img src="assets/img/flags/fr.svg" alt="" class="flag-img" aria-hidden="true">
                                     <span>Français</span>
                                 </a>
                             </li>
@@ -181,7 +160,7 @@
     </nav>
     <div class="preloader">
         <div class="preloader-logo">
-            <img src="assets/img/Maskottchen.webp" alt="IBC Maskottchen" width="200" height="200" class="img-fluid">
+            <img src="assets/img/Maskottchen.webp" alt="IBC Maskottchen" width="200" height="200">
         </div>
         <div class="preloader-dots">
             <div class="preloader-dot"></div>
@@ -201,32 +180,29 @@
             </button>
             <div class="overlay"></div>
             <div class="container js-reveal">
-                <div class="row">
-                    <div class="col-lg-8 col-12">
-                        <h1 class="ibc-heading" data-i18n="hero-title" aria-label="Ihre studentische Unternehmensberatung">Ihre <span class="text-gradient">studentische</span> Unternehmensberatung</h1>
-                        <p class="ibc-lead mt-4" data-i18n="hero-subtitle">Innovation, Fortschritt und Gemeinschaft, direkt aus dem Herzen des Schwarzwalds.</p>
-                        <a href="kontakt.html" class="btn btn-ibc bubbly-button magnetic-element mt-4 fade-in-up" style="transition-delay: 0.4s;" data-i18n="hero-cta">Projekt
-                            anfragen</a>
-                    </div>
+                <div class="col-lg-8">
+                    <h1 class="ibc-heading" data-i18n="hero-title" aria-label="Ihre studentische Unternehmensberatung">Ihre <span class="text-gradient">studentische</span> Unternehmensberatung</h1>
+                    <p class="ibc-lead mt-4" data-i18n="hero-subtitle">Innovation, Fortschritt und Gemeinschaft, direkt aus dem Herzen des Schwarzwalds.</p>
+                    <a href="kontakt.html" class="btn btn-ibc bubbly-button magnetic-element mt-4 fade-in-up" style="transition-delay: 0.4s;" data-i18n="hero-cta">Projekt
+                        anfragen</a>
                 </div>
             </div>
         </section>
-        <section class="competencies-section py-3 py-md-5" id="competencies-section" aria-labelledby="competencies-heading-main">
+        <section class="competencies-section py-5" id="competencies-section" aria-labelledby="competencies-heading-main">
             <div class="competencies-ambient-layer" aria-hidden="true">
                 <div class="competencies-orb competencies-orb-1"></div>
                 <div class="competencies-orb competencies-orb-2"></div>
             </div>
-            <div class="container py-3 py-md-5">
+            <div class="container py-5">
                 <header class="competencies-section-header text-center reveal-fx js-reveal">
                     <h2 id="competencies-heading-main" class="ibc-heading" data-i18n="competencies-heading" aria-label="Unsere Kompetenzen"><span class="text-gradient">Unsere</span> <span class="text-gradient">Kompetenzen</span></h2>
                     <p class="ibc-lead" data-i18n="competencies-subtitle">Wir bringen frische Perspektiven und aktuelles Wissen in Ihr Projekt.</p>
                 </header>
-                <div class="row g-4" id="competenciesAccordionGroup" role="region" data-i18n-aria="competencies-section-aria-label" aria-label="Unsere Kompetenzen">
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <article class="competency-card reveal-fx">
-                            <div class="competency-card__image-wrapper">
-                                <img src="assets/img/competencies/app-development.webp"
-                                     alt="Moderne mobile Anwendung auf Smartphone-Display" class="competency-card__image img-fluid" loading="lazy" data-i18n-alt="competency-app-img-alt">
+                <div class="competencies-cards-grid" id="competenciesAccordionGroup" role="region" data-i18n-aria="competencies-section-aria-label" aria-label="Unsere Kompetenzen">
+                    <article class="competency-card reveal-fx">
+                        <div class="competency-card__image-wrapper">
+                            <img src="assets/img/competencies/app-development.webp"
+                                 alt="Moderne mobile Anwendung auf Smartphone-Display" class="competency-card__image" loading="lazy" data-i18n-alt="competency-app-img-alt">
                         </div>
                         <h3 class="competency-card__heading">
                             <button type="button" class="competency-card__trigger"
@@ -248,14 +224,12 @@
                                     <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                                 </a>
                             </div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <article class="competency-card reveal-fx delay-100">
-                            <div class="competency-card__image-wrapper">
-                                <img src="assets/img/competencies/web-development.webp"
-                                     alt="Responsives Webdesign auf verschiedenen Geräten" class="competency-card__image img-fluid" loading="lazy" data-i18n-alt="competency-web-img-alt">
+                        </div>
+                    </article>
+                    <article class="competency-card reveal-fx delay-100">
+                        <div class="competency-card__image-wrapper">
+                            <img src="assets/img/competencies/web-development.webp"
+                                 alt="Responsives Webdesign auf verschiedenen Geräten" class="competency-card__image" loading="lazy" data-i18n-alt="competency-web-img-alt">
                         </div>
                         <h3 class="competency-card__heading">
                             <button type="button" class="competency-card__trigger"
@@ -277,14 +251,12 @@
                                     <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                                 </a>
                             </div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <article class="competency-card reveal-fx delay-200">
-                            <div class="competency-card__image-wrapper">
-                                <img src="assets/img/competencies/market-analysis.webp"
-                                     alt="Datenvisualisierung und Statistiken auf Bildschirm" class="competency-card__image img-fluid" loading="lazy" data-i18n-alt="competency-market-img-alt">
+                        </div>
+                    </article>
+                    <article class="competency-card reveal-fx delay-200">
+                        <div class="competency-card__image-wrapper">
+                            <img src="assets/img/competencies/market-analysis.webp"
+                                 alt="Datenvisualisierung und Statistiken auf Bildschirm" class="competency-card__image" loading="lazy" data-i18n-alt="competency-market-img-alt">
                         </div>
                         <h3 class="competency-card__heading">
                             <button type="button" class="competency-card__trigger"
@@ -306,14 +278,12 @@
                                     <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                                 </a>
                             </div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <article class="competency-card reveal-fx">
-                            <div class="competency-card__image-wrapper">
-                                <img src="assets/img/competencies/process-optimization.webp"
-                                     alt="Team bei Strategieplanung und Prozessanalyse" class="competency-card__image img-fluid" loading="lazy" data-i18n-alt="competency-process-img-alt">
+                        </div>
+                    </article>
+                    <article class="competency-card reveal-fx">
+                        <div class="competency-card__image-wrapper">
+                            <img src="assets/img/competencies/process-optimization.webp"
+                                 alt="Team bei Strategieplanung und Prozessanalyse" class="competency-card__image" loading="lazy" data-i18n-alt="competency-process-img-alt">
                         </div>
                         <h3 class="competency-card__heading">
                             <button type="button" class="competency-card__trigger"
@@ -335,14 +305,12 @@
                                     <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                                 </a>
                             </div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <article class="competency-card reveal-fx delay-100">
-                            <div class="competency-card__image-wrapper">
-                                <img src="assets/img/competencies/mime2022_scaled.webp"
-                                     alt="Weiterbildung und Seminarsituation mit Teilnehmern" class="competency-card__image img-fluid" loading="lazy" data-i18n-alt="competency-training-img-alt">
+                        </div>
+                    </article>
+                    <article class="competency-card reveal-fx delay-100">
+                        <div class="competency-card__image-wrapper">
+                            <img src="assets/img/competencies/mime2022_scaled.webp"
+                                 alt="Weiterbildung und Seminarsituation mit Teilnehmern" class="competency-card__image" loading="lazy" data-i18n-alt="competency-training-img-alt">
                         </div>
                         <h3 class="competency-card__heading">
                             <button type="button" class="competency-card__trigger"
@@ -364,14 +332,12 @@
                                     <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                                 </a>
                             </div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <article class="competency-card reveal-fx delay-200">
-                            <div class="competency-card__image-wrapper">
-                                <img src="assets/img/competencies/custom-solutions.webp"
-                                     alt="Maßgeschneiderte Beratung und individuelle Lösungen" class="competency-card__image img-fluid" loading="lazy" data-i18n-alt="competency-custom-img-alt">
+                        </div>
+                    </article>
+                    <article class="competency-card reveal-fx delay-200">
+                        <div class="competency-card__image-wrapper">
+                            <img src="assets/img/competencies/custom-solutions.webp"
+                                 alt="Maßgeschneiderte Beratung und individuelle Lösungen" class="competency-card__image" loading="lazy" data-i18n-alt="competency-custom-img-alt">
                         </div>
                         <h3 class="competency-card__heading">
                             <button type="button" class="competency-card__trigger"
@@ -393,14 +359,12 @@
                                     <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                                 </a>
                             </div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <article class="competency-card reveal-fx">
-                            <div class="competency-card__image-wrapper">
-                                <img src="assets/img/competencies/video-bearbeitung.webp"
-                                     alt="Professionelle Video- und Bildbearbeitung" class="competency-card__image img-fluid" loading="lazy" data-i18n-alt="competency-image-video-img-alt">
+                        </div>
+                    </article>
+                    <article class="competency-card reveal-fx">
+                        <div class="competency-card__image-wrapper">
+                            <img src="assets/img/competencies/video-bearbeitung.webp"
+                                 alt="Professionelle Video- und Bildbearbeitung" class="competency-card__image" loading="lazy" data-i18n-alt="competency-image-video-img-alt">
                         </div>
                         <h3 class="competency-card__heading">
                             <button type="button" class="competency-card__trigger"
@@ -422,14 +386,12 @@
                                     <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                                 </a>
                             </div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <article class="competency-card reveal-fx delay-100">
-                            <div class="competency-card__image-wrapper">
-                                <img src="assets/img/competencies/social-media.webp"
-                                     alt="Social Media Marketing und Community Management" class="competency-card__image img-fluid" loading="lazy" data-i18n-alt="competency-social-media-img-alt">
+                        </div>
+                    </article>
+                    <article class="competency-card reveal-fx delay-100">
+                        <div class="competency-card__image-wrapper">
+                            <img src="assets/img/competencies/social-media.webp"
+                                 alt="Social Media Marketing und Community Management" class="competency-card__image" loading="lazy" data-i18n-alt="competency-social-media-img-alt">
                         </div>
                         <h3 class="competency-card__heading">
                             <button type="button" class="competency-card__trigger"
@@ -450,10 +412,9 @@
                                     <span data-i18n="competency-cta-request">Anfrage starten</span>
                                     <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                                 </a>
-                                </div>
                             </div>
-                        </article>
-                    </div>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -544,7 +505,7 @@
                 </div>
             </div>
         </section>
-        <section class="info-cards-section py-3 py-md-5" id="info-section" aria-labelledby="info-section-heading">
+        <section class="info-cards-section py-5" id="info-section" aria-labelledby="info-section-heading">
             <div class="info-ambient-blob info-blob-1" aria-hidden="true"></div>
             <div class="info-ambient-blob info-blob-2" aria-hidden="true"></div>
             <div class="container position-relative" style="z-index: 2;">
@@ -602,7 +563,7 @@
                 <div class="physics-blob physics-blob-1"></div>
                 <div class="physics-blob physics-blob-2"></div>
             </div>
-            <div class="container py-3 py-md-5">
+            <div class="container py-5">
                 <header class="text-center physics-section-header reveal-fx js-reveal">
                     <h2 id="values-section-heading" class="ibc-heading" data-i18n="values-new-heading" aria-label="Unsere Werte"><span class="text-gradient">Unsere</span> <span class="text-gradient">Werte</span></h2>
                     <p class="ibc-lead" data-i18n="values-new-subtitle">Unsere Grundsätze sind keine leeren Worte, sondern der Code unserer DNA.</p>
@@ -657,7 +618,7 @@
                 <div class="row">
                     <div class="col-xl-6">
                         <address class="single-cta">
-                            <img src="assets/icons/Markierung.svg" class="svg-icon svg-icon-large img-fluid" alt="" aria-hidden="true" loading="lazy">
+                            <img src="assets/icons/Markierung.svg" class="svg-icon svg-icon-large" alt="" aria-hidden="true">
                             <div class="cta-text">
                                 <h4 data-i18n="footer-location-heading">Finden Sie uns</h4>
                                 <a href="https://maps.google.com/?q=Robert-Gerwig-Platz+1,+78120+Furtwangen" data-link-id="link-maps" target="_blank" rel="noopener noreferrer" data-i18n="footer-location-text" class="footer-location-link">Robert-Gerwig-Platz 1, 78120 Furtwangen<span class="visually-hidden" data-i18n="opens-in-new-tab"> (öffnet in neuem Tab)</span></a>
@@ -668,8 +629,8 @@
                         <address class="single-cta email-cta">
                             <a href="#" class="copy-email-link email-icon-link" aria-label="E-Mail-Adresse kopieren">
                                 <div class="email-icon-container">
-                                    <img src="assets/icons/envelope-closed.svg" class="email-icon-closed svg-icon img-fluid" alt="" aria-hidden="true" loading="lazy">
-                                    <img src="assets/icons/envelope-open.svg" class="email-icon-open svg-icon img-fluid" alt="" aria-hidden="true" loading="lazy">
+                                    <img src="assets/icons/envelope-closed.svg" class="email-icon-closed svg-icon" alt="" aria-hidden="true">
+                                    <img src="assets/icons/envelope-open.svg" class="email-icon-open svg-icon" alt="" aria-hidden="true">
                                 </div>
                             </a>
                             <div class="cta-text">
