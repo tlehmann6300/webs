@@ -102,9 +102,6 @@ a, button {
     fill: var(--ibc-green) !important;
     transform: scale(1.1);
 }
-    fill: #20234A !important;
-    transform: scale(1.1);
-}
 i.fas, i.fab, i.fa {
   font-style: normal;
   font-variant: normal;
@@ -1343,14 +1340,14 @@ button[type="submit"] {
 }
 #hero-section h1 .text-gradient,
 #hero-section .ibc-heading .text-gradient {
-    background: linear-gradient(135deg, #10b981 0%, #34d399 100%) !important;
+    background: var(--gradient-success) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
     color: transparent !important;
     text-shadow: none !important;
     display: inline !important;
-    filter: drop-shadow(0 2px 8px rgba(16, 185, 129, 0.3));
+    filter: drop-shadow(0 2px 8px rgba(var(--rgb-primary-green), 0.3));
 }
 #hero-section .highlight {
     color: #10b981;
@@ -1572,13 +1569,13 @@ button[type="submit"] {
 .stat-card .stat-number {
     font-size: clamp(3rem, 6vw, 4rem);
     font-weight: 800;
-    background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+    background: var(--gradient-success);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     line-height: 1;
     margin-bottom: 1rem;
-    filter: drop-shadow(0 2px 10px rgba(16, 185, 129, 0.3));
+    filter: drop-shadow(0 2px 10px rgba(var(--rgb-primary-green), 0.3));
 }
 .stat-card .stat-title {
     font-weight: 600;
