@@ -72,6 +72,13 @@ body {
     color: var(--ibc-dark);
     font-size: 2rem;
     margin-bottom: 2rem;
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: var(--ibc-dark);
+}
+.impressum-card h2::after {
+    display: none;
 }
 .impressum-card h3 {
     color: var(--ibc-blue);

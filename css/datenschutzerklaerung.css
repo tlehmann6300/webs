@@ -74,6 +74,11 @@ body {
     background: linear-gradient(135deg, rgba(109, 151, 68, 0.05), rgba(0, 51, 102, 0.05));
     border-radius: 10px;
     border-left: 4px solid var(--ibc-green);
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: var(--ibc-dark);
+}
+.privacy-content h2::after {
+    display: none;
 }
 .privacy-content h2:first-of-type {
     margin-top: 0;
