@@ -622,8 +622,8 @@ a.btn:focus-visible {
     display: inline-block;
 }
 .reveal-fx {
-    opacity: 0;
-    transform: translateY(40px) scale(0.98);
+    opacity: 1;
+    transform: none;
     filter: blur(10px);
     will-change: opacity, transform, filter;
     transition:
@@ -1341,8 +1341,8 @@ a.btn:focus-visible {
     box-shadow: 0 0 0 4px var(--ibc-green), 0 25px 60px -15px rgba(32, 35, 74, 0.15);
 }
 .info-stagger-in {
-    opacity: 0;
-    transform: translateY(40px);
+    opacity: 1;
+    transform: none;
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
 .info-stagger-in.is-visible {
@@ -1885,8 +1885,8 @@ a.btn:focus-visible {
     letter-spacing: 0.03em;
 }
 .stats-section .fade-in-up {
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: 1;
+    transform: none;
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 .stats-section .fade-in-up.visible {
