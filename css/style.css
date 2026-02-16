@@ -1149,12 +1149,6 @@ section.bg-light {
     z-index: 9999;
 }
 .scroll-progress-bar {
-    height: 100%;
-    background: #6D9744;
-    width: 0%;
-    box-shadow: 0 2px 8px rgba(var(--rgb-primary-green), 0.3);
-}
-.scroll-progress-bar {
     position: fixed;
     top: 0;
     left: 0;
