@@ -64,7 +64,7 @@
             const documentHeight = document.documentElement.scrollHeight;
             
             // Hole aktuelle Scroll-Position von oben (Cross-Browser-kompatibel)
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
             
             /**
              * Berechne die scrollbare Höhe

@@ -30,24 +30,24 @@ if (!document.querySelector('[data-navbar-scroll-loaded]')) {
     
     /**
      * Throttle-Funktion zur Performance-Optimierung
-     * Verhindert zu häufige Ausführung des Scroll-Handlers
+     * Verwendet requestAnimationFrame für optimales Timing
      */
-    let scrollTimeout;
+    let ticking = false;
     const handleScroll = () => {
-        if (scrollTimeout) return;
-        scrollTimeout = setTimeout(() => {
+        if (!ticking) {
             requestAnimationFrame(() => {
                 // Prüfe, ob die Seite mehr als 50 Pixel nach unten gescrollt ist
-                if (window.pageYOffset > 50) {
+                if (window.scrollY > 50) {
                     // Füge 'scrolled'-Klasse hinzu für visuellen Effekt
                     navbar.classList.add('scrolled');
                 } else {
                     // Entferne 'scrolled'-Klasse, wenn oben auf der Seite
                     navbar.classList.remove('scrolled');
                 }
-                scrollTimeout = null;
+                ticking = false;
             });
-        }, 100);
+            ticking = true;
+        }
     };
     
     // Verwende passive event listener für bessere Performance
