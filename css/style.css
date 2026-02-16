@@ -243,6 +243,7 @@ a:not(.btn):not(.nav-link):not(.social-button-list a):not(.footer-logo a) {
   --rgb-primary-blue: 32, 35, 74;
   --rgb-secondary-blue: 77, 80, 97;
   --bg-color-light: #f8f9fa;
+  --bg-color-soft: #f8f9fa;
   --ibc-green: var(--color-primary-green);
   --ibc-green-light: var(--color-secondary-green-light);
   --ibc-blue: var(--color-primary-blue);
@@ -287,7 +288,7 @@ a:not(.btn):not(.nav-link):not(.social-button-list a):not(.footer-logo a) {
   --mobile-sidebar-width: 300px;
   --ease-premium: cubic-bezier(0.25, 1, 0.5, 1);
   --anim-duration: 1.2s;
-  --focus-ring: 3px solid var(--ibc-blue);
+  --focus-ring: 3px solid rgba(var(--rgb-primary-blue), 0.6);
   --focus-offset: 3px;
   --shadow-premium: 0 10px 40px rgba(0,0,0,.15), 0 2px 8px rgba(0,0,0,.08);
   --ease: cubic-bezier(.25,1,.5,1);

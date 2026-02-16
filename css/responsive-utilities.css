@@ -321,10 +321,14 @@
 }
 
 /* Enhanced Focus Styles for Accessibility */
-*:focus-visible {
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
   outline: var(--focus-ring);
   outline-offset: var(--focus-offset);
-  border-radius: 4px;
 }
 
 /* Improved Smooth Scrolling */
