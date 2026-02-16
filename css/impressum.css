@@ -49,8 +49,8 @@ body {
     border-image: linear-gradient(to right, var(--ibc-green), var(--ibc-blue)) 1;
     margin-bottom: 2.5rem;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
-    opacity: 1;
-    transform: none;
+    opacity: 0;
+    transform: translateY(30px);
 }
 .impressum-card.is-visible {
     opacity: 1;
@@ -72,13 +72,6 @@ body {
     color: var(--ibc-dark);
     font-size: 2rem;
     margin-bottom: 2rem;
-    background: none;
-    -webkit-background-clip: unset;
-    background-clip: unset;
-    -webkit-text-fill-color: var(--ibc-dark);
-}
-.impressum-card h2::after {
-    display: none;
 }
 .impressum-card h3 {
     color: var(--ibc-blue);
@@ -86,7 +79,7 @@ body {
     margin-top: 2.5rem;
     margin-bottom: 1.5rem;
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(var(--rgb-primary-blue, 32, 35, 74), 0.08);
+    border-top: 1px solid #f0f0f0;
 }
 .impressum-card h2 .icon,
 .impressum-card h3 .icon {
