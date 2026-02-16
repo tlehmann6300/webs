@@ -5051,7 +5051,7 @@ img[alt=""],
     background: white;
     color: #6D9744;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 1.125rem;
     text-transform: uppercase;
     transition: all 0.3s ease;
     cursor: pointer;
@@ -5485,7 +5485,7 @@ h3.display-1, h3.display-2, h3.display-3, h3.display-4, h3.display-5 {
     textarea {
         min-height: 48px;
         padding: 12px;
-        font-size: 16px;
+        font-size: 1rem;
     }
     input[type="checkbox"],
     input[type="radio"] {
@@ -5973,7 +5973,7 @@ body.homepage .navbar:not(.scrolled) .nav-link {
     overflow: hidden;
     transition: all .4s var(--ease-smooth);
     color: var(--blue);
-    font-size: 15px;
+    font-size: 0.9375rem;
     letter-spacing: -0.01em;
 }
 .nav-link::before {
@@ -6172,7 +6172,7 @@ body.homepage .navbar:not(.scrolled) .nav-link {
     text-decoration: none;
     color: #1a202c;
     transition: all .2s ease;
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 .lang-item:hover,
 .lang-item:focus-visible {
