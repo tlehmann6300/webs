@@ -166,7 +166,7 @@ body {
 .privacy-content address,
 .privacy-content address p {
     padding: 1.25rem 1.5rem;
-    background-color: #f8f9fa;
+    background-color: var(--ibc-bg-light, #f8f9fa);
     border-radius: 8px;
     margin: 1.5rem 0;
     border-left: 3px solid var(--ibc-blue);

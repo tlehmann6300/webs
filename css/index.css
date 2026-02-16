@@ -1,21 +1,40 @@
 .instagram-section {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: linear-gradient(135deg, var(--ibc-bg-light, #f8f9fa) 0%, rgba(var(--rgb-primary-green), 0.04) 100%);
     position: relative;
+    overflow: hidden;
+}
+.instagram-section::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 40vw;
+    height: 40vw;
+    background: radial-gradient(circle, rgba(var(--rgb-primary-green), 0.06) 0%, transparent 60%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+.instagram-section > * {
+    position: relative;
+    z-index: 1;
 }
 .instagram-card {
     border-radius: 20px !important;
     overflow: hidden !important;
-    background: rgba(18,18,18,0.05);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 30px rgba(var(--rgb-primary-blue), 0.06);
     backdrop-filter: blur(8px);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     max-width: 350px;
     margin: 0 auto;
+    border: 1px solid rgba(var(--rgb-primary-green), 0.08);
 }
 .instagram-card:hover {
-    transform: scale(1.05) translateY(-10px);
-    box-shadow: 0 20px 50px rgba(64, 84, 178, 0.15),
-                0 0 30px rgba(93, 167, 57, 0.1);
+    transform: scale(1.03) translateY(-8px);
+    box-shadow: 0 20px 50px rgba(var(--rgb-primary-blue), 0.12),
+                0 0 30px rgba(var(--rgb-primary-green), 0.1);
+    border-color: rgba(var(--rgb-primary-green), 0.2);
 }
 .instagram-media {
     border-radius: 20px !important;
@@ -48,7 +67,7 @@
     .instagram-card {
         backdrop-filter: blur(8px) !important;
         -webkit-backdrop-filter: blur(8px) !important;
-        background: rgba(18,18,18,0.05) !important;
+        background: rgba(255, 255, 255, 0.8) !important;
     }
 }
 @media (max-width: 480px) {
@@ -85,12 +104,12 @@
     display: inline-block !important;
     margin-top: 1.5rem !important;
     opacity: 1 !important;
-    box-shadow: 0 4px 15px rgba(64, 84, 178, 0.2) !important;
+    box-shadow: 0 4px 15px rgba(var(--rgb-primary-blue), 0.2) !important;
     transition: all 0.3s ease !important;
 }
 .jan-pfeiffer-footer:hover {
     transform: translateY(-2px) !important;
-    box-shadow: 0 6px 20px rgba(64, 84, 178, 0.3) !important;
+    box-shadow: 0 6px 20px rgba(var(--rgb-primary-blue), 0.3) !important;
 }
 .jan-pfeiffer-image {
     max-width: 180px !important;
@@ -127,7 +146,7 @@ a.btn:focus-visible {
 .values-section .value-card h3,
 .core-values-section h3,
 .value-item h3 {
-    color: black;
+    color: var(--ibc-text-primary);
     font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
     font-weight: 600 !important;
     letter-spacing: -0.02em !important;
@@ -138,7 +157,7 @@ a.btn:focus-visible {
 .value-item,
 .value-card {
     background: linear-gradient(135deg, #ffffff 0%, var(--ibc-bg-light) 100%) !important;
-    border: 1px solid rgba(59, 130, 246, 0.1) !important;
+    border: 1px solid rgba(var(--rgb-primary-green), 0.1) !important;
     border-radius: 20px !important;
     padding: 2.5rem !important;
     transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
@@ -200,24 +219,42 @@ a.btn:focus-visible {
 .testimonial-card {
     background: var(--ibc-white);
     padding: 3rem 2.5rem;
-    border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(var(--rgb-primary-blue), 0.06);
     position: relative;
     margin: 2rem auto;
     max-width: 900px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(var(--rgb-primary-green), 0.08);
+    overflow: hidden;
+}
+.testimonial-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--ibc-green), var(--ibc-blue));
+    border-radius: 20px 20px 0 0;
 }
 .testimonial-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 60px rgba(93, 167, 57, 0.15);
+    box-shadow: 0 20px 60px rgba(var(--rgb-primary-green), 0.12),
+                0 4px 20px rgba(var(--rgb-primary-blue), 0.06);
+    border-color: rgba(var(--rgb-primary-green), 0.15);
 }
 .testimonial-quote-icon {
-    font-size: 3rem;
-    color: var(--ibc-green);
-    opacity: 0.2;
+    font-size: 4rem;
+    background: linear-gradient(135deg, var(--ibc-green), var(--ibc-green-light, #7db356));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.15;
     position: absolute;
     top: 20px;
     left: 30px;
+    line-height: 1;
 }
 .testimonial-quote-text {
     font-size: clamp(1.1rem, 2.5vw, 1.3rem);
@@ -235,14 +272,16 @@ a.btn:focus-visible {
     }
 }
 .testimonial-author {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--ibc-blue);
     font-style: normal;
     margin-top: 1.5rem;
-    border-top: 2px solid rgba(93, 167, 57, 0.2);
-    padding-top: 1rem;
+    border-top: 2px solid rgba(var(--rgb-primary-green), 0.15);
+    padding-top: 1.25rem;
 }
 .testimonial-author::before {
     content: '— ';
@@ -256,7 +295,7 @@ a.btn:focus-visible {
     width: 50px !important;
     height: 50px !important;
     border-radius: 50% !important;
-    background: rgba(93, 167, 57, 0.1) !important;
+    background: rgba(var(--rgb-primary-green), 0.1) !important;
     color: var(--ibc-green) !important;
     opacity: 1 !important;
     transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease !important;
@@ -273,7 +312,7 @@ a.btn:focus-visible {
     background: var(--ibc-green) !important;
     color: var(--ibc-white) !important;
     transform: translateY(-50%) !important;
-    box-shadow: 0 8px 20px rgba(93, 167, 57, 0.3) !important;
+    box-shadow: 0 8px 20px rgba(var(--rgb-primary-green), 0.3) !important;
 }
 #testimonialCarousel .carousel-indicators {
     bottom: -50px;
@@ -282,7 +321,7 @@ a.btn:focus-visible {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: rgba(93, 167, 57, 0.3);
+    background-color: rgba(var(--rgb-primary-green), 0.3);
     border: none;
     transition: all 0.3s ease;
 }
@@ -353,9 +392,9 @@ a.btn:focus-visible {
 .partner-card:hover {
     transform: translateY(-8px);
     box-shadow:
-        0 25px 45px rgba(64, 84, 178, 0.1),
-        0 0 0 3px rgba(64, 84, 178, 0.1);
-    border-color: rgba(64, 84, 178, 0.2);
+        0 25px 45px rgba(var(--rgb-primary-blue), 0.1),
+        0 0 0 3px rgba(var(--rgb-primary-blue), 0.1);
+    border-color: rgba(var(--rgb-primary-blue), 0.2);
     z-index: 10;
 }
 .logo-container {
@@ -385,12 +424,12 @@ a.btn:focus-visible {
 .partner-content h3 {
     font-weight: 700;
     margin-bottom: 1rem;
-    color: var(--ibc-dark, #1D2D35);
+    color: var(--ibc-dark, #20234A);
     letter-spacing: -0.01em;
 }
 .partner-content p {
     flex-grow: 1;
-    color: var(--ibc-text-secondary, #586270);
+    color: var(--ibc-text-secondary, #4d5061);
     font-size: 1rem;
     line-height: 1.75;
     text-align: left;
@@ -420,14 +459,14 @@ a.btn:focus-visible {
 .read-more-btn {
     appearance: none;
     border: none;
-    background: rgba(64, 84, 178, 0.05);
+    background: rgba(var(--rgb-primary-blue), 0.05);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     font-family: inherit;
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--ibc-blue, #4054B2);
+    color: var(--ibc-blue, #20234A);
     cursor: pointer;
     margin-bottom: 2rem;
     padding: 6px 16px;
@@ -435,11 +474,11 @@ a.btn:focus-visible {
     transition: all 0.3s ease;
 }
 .read-more-btn:hover {
-    background-color: rgba(64, 84, 178, 0.1);
-    color: var(--ibc-dark, #1D2D35);
+    background-color: rgba(var(--rgb-primary-blue), 0.1);
+    color: var(--ibc-dark, #20234A);
 }
 .read-more-btn:focus-visible {
-    outline: 2px solid var(--ibc-blue, #4054B2);
+    outline: 2px solid var(--ibc-blue, #20234A);
     outline-offset: 2px;
 }
 .read-more-btn::after {
@@ -553,11 +592,12 @@ a.btn:focus-visible {
 .section-heading-animated {
     position: relative;
     display: inline-block;
-    padding-bottom: 1rem;
-    margin-bottom: 2rem;
+    padding-bottom: 1.25rem;
+    margin-bottom: 2.5rem;
     font-weight: 700;
-    color: var(--ibc-dark, #1D2D35);
-    letter-spacing: -0.02em;
+    color: var(--ibc-dark, #20234A);
+    letter-spacing: -0.03em;
+    line-height: 1.2;
 }
 .section-heading-animated::after {
     content: '';
@@ -566,16 +606,16 @@ a.btn:focus-visible {
     left: 0;
     width: 0%;
     height: 4px;
-    background: linear-gradient(90deg, var(--ibc-green, #5DA739), var(--ibc-blue, #4054B2));
+    background: linear-gradient(90deg, var(--ibc-green, #6D9744), var(--ibc-blue, #20234A));
     border-radius: 2px;
-    box-shadow: 0 2px 10px rgba(64, 84, 178, 0.3);
+    box-shadow: 0 2px 10px rgba(var(--rgb-primary-blue), 0.3);
     transition: width 1s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .section-heading-animated.is-visible::after {
     width: 100%;
 }
 .highlight-gradient {
-    background: linear-gradient(135deg, var(--ibc-blue, #4054B2) 0%, var(--ibc-green, #5DA739) 100%);
+    background: linear-gradient(135deg, var(--ibc-blue, #20234A) 0%, var(--ibc-green, #6D9744) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -601,16 +641,16 @@ a.btn:focus-visible {
 .delay-300 { transition-delay: 0.3s; }
 .section-heading-wrapper {
     text-align: center;
+    margin-bottom: 1rem;
 }
 .section-heading-wrapper::after {
     content: '';
     display: block;
-    width: 60px;
+    width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, var(--ibc-green, #5DA739), var(--ibc-blue, #4054B2));
+    background: linear-gradient(90deg, var(--ibc-green, #6D9744), var(--ibc-blue, #20234A));
     border-radius: 2px;
-    margin: 0 auto;
-    margin-top: 0.5rem;
+    margin: 0.75rem auto 0;
 }
 @media (prefers-reduced-motion: reduce) {
     .reveal-fx {
@@ -626,10 +666,10 @@ a.btn:focus-visible {
 }
 .values-section-new {
     --values-bg-body: #ffffff;
-    --values-color-primary: #1a1c2e;
-    --values-color-text: #334155;
-    --values-color-primary-hover: #242740;
-    --values-focus-color: #2563eb;
+    --values-color-primary: var(--ibc-blue, #20234A);
+    --values-color-text: var(--ibc-text-secondary, #4d5061);
+    --values-color-primary-hover: var(--ibc-blue-dark, #151730);
+    --values-focus-color: var(--ibc-green, #6D9744);
     --values-orb-1: rgba(96, 151, 68, 0.12);
     --values-orb-2: rgba(26, 28, 46, 0.06);
     --values-shadow-card: 0 1px 2px rgba(0,0,0,0.03), 0 4px 16px rgba(0,0,0,0.03), 0 24px 40px rgba(0,0,0,0.03);
@@ -730,7 +770,7 @@ a.btn:focus-visible {
 .value-card__trigger:focus-visible {
     outline: 3px solid var(--values-focus-color);
     outline-offset: -3px;
-    background-color: rgba(37, 99, 235, 0.04);
+    background-color: rgba(var(--rgb-primary-green), 0.04);
     border-radius: 12px;
 }
 .value-card__title {
@@ -1115,7 +1155,7 @@ a.btn:focus-visible {
 .info-cards-section {
     --ibc-green: #6D9744;
     --ibc-blue: #20234A;
-    --ibc-dark: #1a1c30;
+    --ibc-dark: var(--ibc-blue, #20234A);
     --text-main: #20234A;
     --text-muted: #4d5061;
     --glass-bg: rgba(255, 255, 255, 0.7);
@@ -1385,10 +1425,10 @@ a.btn:focus-visible {
 }
 .competencies-section {
     --competencies-bg-body: var(--bg-color-light, #ffffff);
-    --competencies-color-primary: var(--ibc-blue, #1a1c2e);
-    --competencies-color-text: var(--ibc-text-secondary, #334155);
-    --competencies-color-primary-hover: #242740;
-    --competencies-focus-color: var(--ibc-green, #2563eb);
+    --competencies-color-primary: var(--ibc-blue, #20234A);
+    --competencies-color-text: var(--ibc-text-secondary, #4d5061);
+    --competencies-color-primary-hover: var(--ibc-blue-dark, #151730);
+    --competencies-focus-color: var(--ibc-green, #6D9744);
     --competencies-orb-1: rgba(96, 151, 68, 0.08);
     --competencies-orb-2: rgba(26, 28, 46, 0.04);
     --competencies-shadow-card: var(--shadow-soft, 0 1px 2px rgba(0,0,0,0.03), 0 4px 16px rgba(0,0,0,0.03), 0 24px 40px rgba(0,0,0,0.03));
@@ -1502,7 +1542,7 @@ a.btn:focus-visible {
 .competency-card__trigger:focus-visible {
     outline: 3px solid var(--competencies-focus-color);
     outline-offset: -3px;
-    background-color: rgba(37, 99, 235, 0.04);
+    background-color: rgba(var(--rgb-primary-green), 0.04);
     border-radius: 12px;
 }
 .competency-card__title {
@@ -1831,7 +1871,7 @@ a.btn:focus-visible {
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 0.5rem;
-    background: linear-gradient(135deg, var(--ibc-green, #6D9744), #9BC76D 70%);
+    background: linear-gradient(135deg, var(--ibc-green, #6D9744), var(--ibc-green-light, #7db356) 70%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -1863,5 +1903,142 @@ a.btn:focus-visible {
         transform: none !important;
         animation: none !important;
         opacity: 1 !important;
+    }
+}
+
+/* Service/Angebot card enhancements */
+.service-card,
+.angebot-card {
+    border: 1px solid rgba(var(--rgb-primary-blue), 0.06);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                border-color 0.3s ease;
+}
+.service-card:hover,
+.angebot-card:hover {
+    border-color: rgba(var(--rgb-primary-green), 0.2);
+    box-shadow: 0 20px 50px rgba(var(--rgb-primary-blue), 0.1),
+                0 0 0 1px rgba(var(--rgb-primary-green), 0.1);
+}
+.service-card h3,
+.angebot-card h3 {
+    transition: color 0.3s ease;
+}
+.service-card:hover h3,
+.angebot-card:hover h3 {
+    color: var(--ibc-green);
+}
+
+/* Ensure all images/embeds respect container width */
+img, video, iframe, embed, object {
+    max-width: 100%;
+}
+
+/* Enhanced mobile responsive behavior */
+@media (max-width: 768px) {
+    .section-heading-animated {
+        padding-bottom: 1rem;
+        margin-bottom: 2rem;
+        font-size: clamp(1.5rem, 4vw, 2rem) !important;
+    }
+    .section-heading-wrapper::after {
+        width: 60px;
+    }
+    .testimonial-card {
+        padding: 2rem 1.5rem;
+        margin: 1rem auto;
+        border-radius: 16px;
+    }
+    .testimonial-card::before {
+        height: 3px;
+    }
+    .testimonial-quote-icon {
+        font-size: 2.5rem;
+        top: 12px;
+        left: 16px;
+    }
+    .testimonial-author {
+        font-size: 1rem;
+    }
+    #testimonialCarousel .carousel-control-prev,
+    #testimonialCarousel .carousel-control-next {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 0.9rem;
+    }
+    .stats-section .stat-card {
+        max-width: 100%;
+        padding: 2rem 1.25rem;
+    }
+    .partner-card {
+        padding: 1.5rem;
+        text-align: left;
+    }
+    .partner-content {
+        align-items: flex-start;
+    }
+    .logo-container {
+        justify-content: flex-start;
+        height: 70px;
+    }
+    .ethereal-button {
+        padding: 12px 30px;
+        font-size: 0.9rem;
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .read-more-btn {
+        align-self: center;
+        margin: 0 auto;
+    }
+    .service-card,
+    .angebot-card {
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .instagram-section {
+        padding: 2.5rem 0 !important;
+    }
+    .instagram-card {
+        border-radius: 16px !important;
+    }
+    .testimonial-card {
+        padding: 1.5rem 1.25rem;
+        border-radius: 14px;
+    }
+    .testimonial-quote-text {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+    .testimonial-author {
+        font-size: 0.95rem;
+        padding-top: 1rem;
+    }
+    #testimonialCarousel .carousel-control-prev,
+    #testimonialCarousel .carousel-control-next {
+        width: 36px !important;
+        height: 36px !important;
+    }
+    .section-heading-animated {
+        font-size: clamp(1.3rem, 5vw, 1.75rem) !important;
+    }
+    .section-heading-wrapper::after {
+        width: 50px;
+        height: 3px;
+    }
+    .stats-section .stat-card {
+        border-radius: 16px;
+        padding: 1.5rem 1rem;
+    }
+    .stats-section .stat-number {
+        font-size: clamp(2rem, 8vw, 2.5rem);
+    }
+    .partner-card {
+        border-radius: 16px;
+        padding: 1.25rem;
     }
 }

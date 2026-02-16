@@ -72,7 +72,7 @@ body:not(.homepage) main {
 }
 .alumni-section {
     padding: clamp(6rem, 12vw, 8rem) 0;
-    background: linear-gradient(rgba(29, 45, 53, 0.9), rgba(29, 45, 53, 0.9)) no-repeat center center;
+    background: linear-gradient(rgba(var(--rgb-primary-blue), 0.9), rgba(var(--rgb-primary-blue), 0.9)) no-repeat center center;
     background-size: cover;
     background-attachment: fixed;
     color: var(--ibc-white);
@@ -85,8 +85,9 @@ body:not(.homepage) main {
     top: -100px;
     left: -100px;
     width: 400px;
+    max-width: 100%;
     height: 400px;
-    background: radial-gradient(circle, rgba(93, 167, 57, 0.15), transparent 70%);
+    background: radial-gradient(circle, rgba(var(--rgb-primary-green), 0.15), transparent 70%);
     border-radius: 50%;
     opacity: 0.8;
     animation: pulseGlow 10s infinite alternate ease-in-out;
@@ -118,7 +119,7 @@ body:not(.homepage) main {
     color: var(--ibc-dark);
 }
 .partner-card {
-    background: #ffffff;
+    background: var(--ibc-white);
     border-radius: 24px;
     padding: 2.5rem 2rem;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
@@ -135,10 +136,10 @@ body:not(.homepage) main {
 .partner-card:hover {
     transform: translateY(-12px) scale(1.02);
     box-shadow:
-        0 30px 60px rgba(32, 35, 74, 0.15),
+        0 30px 60px rgba(var(--rgb-primary-blue), 0.15),
         0 15px 25px rgba(0, 0, 0, 0.08),
-        0 0 0 3px rgba(96, 151, 68, 0.12);
-    border-color: rgba(96, 151, 68, 0.25);
+        0 0 0 3px rgba(var(--rgb-primary-green), 0.12);
+    border-color: rgba(var(--rgb-primary-green), 0.25);
     z-index: 10;
 }
 .logo-container {
@@ -216,7 +217,7 @@ body:not(.homepage) main {
 .read-more-btn {
     appearance: none;
     border: none;
-    background: rgba(64, 84, 178, 0.05);
+    background: rgba(var(--rgb-primary-blue), 0.05);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -228,11 +229,12 @@ body:not(.homepage) main {
     margin-bottom: 2rem;
     padding: 6px 16px;
     border-radius: 20px;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .read-more-btn:hover {
-    background-color: rgba(64, 84, 178, 0.1);
+    background-color: rgba(var(--rgb-primary-blue), 0.1);
     color: var(--ibc-dark);
+    transform: translateY(-1px);
 }
 .read-more-btn:focus-visible {
     outline: 2px solid var(--ibc-blue);
@@ -338,7 +340,7 @@ body:not(.homepage) main {
     text-decoration: none !important;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.4s ease;
-    box-shadow: 0 8px 20px rgba(64, 84, 178, 0.2);
+    box-shadow: 0 8px 20px rgba(var(--rgb-primary-blue), 0.2);
 }
 a.ethereal-button {
     display: inline-flex;
@@ -389,7 +391,7 @@ a.ethereal-button {
 }
 .ethereal-button:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(64, 84, 178, 0.3), 0 0 15px rgba(93, 167, 57, 0.2);
+    box-shadow: 0 10px 25px rgba(var(--rgb-primary-blue), 0.3), 0 0 15px rgba(var(--rgb-primary-green), 0.2);
     color: var(--ibc-white) !important;
     text-decoration: none !important;
 }
@@ -398,6 +400,11 @@ a.ethereal-button {
 }
 .ethereal-button:hover::after {
     opacity: 0.7;
+}
+.ethereal-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(var(--rgb-primary-blue), 0.2);
+    transition-duration: 0.1s;
 }
 .btn.ethereal-button {
      padding: 12px 35px;
@@ -453,30 +460,67 @@ a.ethereal-button {
 }
 @media (max-width: 767px) {
     body { padding-top: 70px; }
-    .page-hero-section { padding: 6rem 0 5rem 0; }
+    .page-hero-section { padding: 5rem 1rem 4rem 1rem; }
     .page-hero-section h1 { font-size: 2.8rem; }
+    .page-hero-section .lead { font-size: 1.05rem; }
+    .section-heading { margin-bottom: 2.5rem; }
     .alumni-counter .number { font-size: 4rem; }
     .alumni-counter .label { font-size: 1.1rem; }
     .partner-card { padding: 2rem; }
     .kuratorium-mitglied { padding: 3rem 0; }
     .kuratorium-img { max-width: 200px !important; }
+    .alumni-stats-card { padding: 3rem 2rem; border-radius: 24px; }
+    .alumni-stats-number { font-size: clamp(3.5rem, 10vw, 5rem); }
+    .executive-card { padding: 2.5rem 1.5rem; border-radius: 20px; }
+    .executive-card img { width: 120px; height: 120px; }
+    .executive-card h3 { font-size: 1.4rem; }
+    .angebot-card { padding: 2rem 1.5rem; }
 }
 @media (max-width: 480px) {
+    .page-hero-section { padding: 4rem 0.75rem 3rem 0.75rem; }
+    .page-hero-section h1 { font-size: 2rem; letter-spacing: -0.03em; }
+    .page-hero-section .lead { font-size: 0.95rem; }
+    .section-heading { margin-bottom: 2rem; font-size: 1.6rem; }
     .kuratorium-img { max-width: 160px !important; }
     .kuratorium-content .blockquote { font-size: 1rem; padding: 1rem; }
-     .col-lg-3.col-md-6, .col-lg-4.col-md-6 { flex: 0 0 100%; max-width: 100%; }
+    .col-lg-3.col-md-6, .col-lg-4.col-md-6 { flex: 0 0 100%; max-width: 100%; }
     .read-more-link {
         margin-left: auto;
         margin-right: auto;
     }
+    .partner-card { border-radius: 18px; padding: 1.25rem; }
+    .partner-card:hover { transform: translateY(-4px); }
+    .logo-container { height: 60px; margin-bottom: 1rem; }
+    .alumni-stats-card { padding: 2.5rem 1.5rem; border-radius: 20px; }
+    .alumni-stats-number { font-size: 3.5rem; margin-bottom: 1rem; }
+    .alumni-stats-label { font-size: 1.2rem; }
+    .alumni-stats-description { font-size: 0.95rem; max-width: 100%; }
+    .executive-card { padding: 2rem 1.25rem; border-radius: 18px; }
+    .executive-card img { width: 100px; height: 100px; }
+    .executive-card h3 { font-size: 1.25rem; }
+    .executive-card h4 { font-size: 0.95rem; }
+    .executive-card blockquote { font-size: 0.95rem; padding: 0 0.5rem; }
+    .angebot-card { padding: 1.75rem 1.25rem; border-radius: 18px; }
+    .angebot-card i { font-size: 2.2rem; margin-bottom: 1rem; }
+    .angebot-card h3 { font-size: 1.15rem; }
+    .insta-container { width: 100%; max-width: 300px; height: 550px; }
+    .instagram-feed-container { padding: 20px 10px; gap: 20px; }
+    .legal-page-container { padding: 2rem 1rem; }
 }
 @media (max-width: 768px) {
     .partner-card {
         padding: 1.5rem;
         text-align: left;
+        border-radius: 20px;
+    }
+    .partner-card:hover {
+        transform: translateY(-6px);
     }
     .partner-content {
         align-items: flex-start;
+    }
+    .partner-content p {
+        font-size: 0.9rem;
     }
     .logo-container {
         justify-content: flex-start;
@@ -493,9 +537,24 @@ a.ethereal-button {
         align-self: center;
         margin: 0 auto;
     }
+    .section-heading + .lead {
+        font-size: 1rem;
+    }
+    .kuratorium-content .blockquote {
+        padding: 0.75rem 1.25rem;
+        font-size: 1rem;
+    }
+    .insta-container {
+        width: 100%;
+        max-width: 300px;
+        height: 600px;
+    }
+    .instagram-feed-container {
+        gap: 30px;
+    }
 }
 .partner-card {
-    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
     overflow: visible;
     position: relative;
 }
@@ -503,17 +562,22 @@ a.ethereal-button {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(93, 167, 57, 0.05), rgba(64, 84, 178, 0.05));
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(var(--rgb-primary-green), 0.06), rgba(var(--rgb-primary-blue), 0.06));
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.5s ease;
     pointer-events: none;
 }
 .partner-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(var(--rgb-primary-blue), 0.12), 0 8px 20px rgba(0, 0, 0, 0.06);
 }
 .partner-card:hover::after {
     opacity: 1;
+}
+.partner-card:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--rgb-primary-green), 0.3), 0 8px 25px rgba(0, 0, 0, 0.06);
 }
 .network-member-card:nth-child(1) { --animation-delay: 0.1s; }
 .network-member-card:nth-child(2) { --animation-delay: 0.2s; }
@@ -541,7 +605,7 @@ a.ethereal-button {
     transform: scale(1.15) rotate(5deg);
 }
 .alumni-section {
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    background: linear-gradient(135deg, var(--ibc-bg-light) 0%, var(--ibc-white) 100%);
     padding: clamp(6rem, 12vw, 9rem) 0;
     position: relative;
     overflow: hidden;
@@ -553,11 +617,11 @@ a.ethereal-button {
     left: -20%;
     width: 60%;
     height: 160%;
-    background: radial-gradient(circle, rgba(64, 84, 178, 0.06) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--rgb-primary-blue), 0.06) 0%, transparent 70%);
     pointer-events: none;
 }
 .alumni-stats-card {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    background: linear-gradient(135deg, var(--ibc-white) 0%, var(--ibc-bg-light) 100%);
     padding: 4rem 3rem;
     border-radius: 32px;
     box-shadow: var(--shadow-premium-lifted);
@@ -628,9 +692,9 @@ a.ethereal-button {
     overflow: hidden;
 }
 .partner-card:hover {
-    transform: translateY(-15px) rotateX(2deg);
+    transform: translateY(-12px) rotateX(2deg);
     box-shadow: var(--shadow-premium-hover);
-    border-color: rgba(64, 84, 178, 0.15);
+    border-color: rgba(var(--rgb-primary-green), 0.2);
 }
 .partner-card img {
     transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
@@ -661,10 +725,10 @@ a.ethereal-button {
 }
 .partner-card .btn-outline-ibc:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(64, 84, 178, 0.25);
+    box-shadow: 0 6px 20px rgba(var(--rgb-primary-blue), 0.25);
 }
 .kuratorium-section {
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    background: linear-gradient(135deg, var(--ibc-bg-light) 0%, var(--ibc-white) 100%);
 }
 .executive-card {
     background: var(--ibc-white);
@@ -695,6 +759,7 @@ a.ethereal-button {
 .executive-card:hover {
     transform: translateY(-12px);
     box-shadow: var(--shadow-premium-hover);
+    border-color: rgba(var(--rgb-primary-green), 0.15);
 }
 .executive-card img {
     width: 140px;
@@ -707,7 +772,7 @@ a.ethereal-button {
 }
 .executive-card:hover img {
     transform: scale(1.08);
-    box-shadow: 0 12px 35px rgba(64, 84, 178, 0.25);
+    box-shadow: 0 12px 35px rgba(var(--rgb-primary-blue), 0.25);
 }
 .executive-card h3 {
     font-size: 1.6rem;
@@ -761,7 +826,7 @@ a.ethereal-button {
 }
 #eventCarousel .carousel-control-prev,
 #eventCarousel .carousel-control-next {
-    background: rgba(64, 84, 178, 0.1) !important;
+    background: rgba(var(--rgb-primary-blue), 0.1) !important;
     color: var(--ibc-blue) !important;
     opacity: 1 !important;
     transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1) !important;
@@ -772,11 +837,11 @@ a.ethereal-button {
     background: var(--ibc-blue) !important;
     color: var(--ibc-white) !important;
     transform: translateY(-3px) scale(1.05) !important;
-    box-shadow: 0 8px 20px rgba(64, 84, 178, 0.25) !important;
+    box-shadow: 0 8px 20px rgba(var(--rgb-primary-blue), 0.25) !important;
 }
 #testimonialCarousel .carousel-control-prev,
 #testimonialCarousel .carousel-control-next {
-    background: rgba(93, 167, 57, 0.1) !important;
+    background: rgba(var(--rgb-primary-green), 0.1) !important;
     color: var(--ibc-green) !important;
     opacity: 1 !important;
     transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1) !important;
@@ -787,16 +852,16 @@ a.ethereal-button {
     background: var(--ibc-green) !important;
     color: var(--ibc-white) !important;
     transform: translateY(-3px) scale(1.05) !important;
-    box-shadow: 0 8px 20px rgba(93, 167, 57, 0.25) !important;
+    box-shadow: 0 8px 20px rgba(var(--rgb-primary-green), 0.25) !important;
 }
 .alumni-section {
-    background: linear-gradient(135deg, rgba(29, 45, 53, 0.95), rgba(40, 60, 75, 0.92)) no-repeat center center !important;
+    background: linear-gradient(135deg, rgba(var(--rgb-primary-blue), 0.95), rgba(var(--rgb-primary-blue), 0.92)) no-repeat center center !important;
     background-size: cover !important;
     background-attachment: fixed !important;
 }
 #instagram-section {
     padding: clamp(4rem, 8vw, 6rem) 0;
-    background: linear-gradient(135deg, rgba(93, 167, 57, 0.03) 0%, rgba(64, 84, 178, 0.02) 50%, rgba(93, 167, 57, 0.03) 100%);
+    background: linear-gradient(135deg, rgba(var(--rgb-primary-green), 0.03) 0%, rgba(var(--rgb-primary-blue), 0.02) 50%, rgba(var(--rgb-primary-green), 0.03) 100%);
 }
 #instagram-section h2 {
     font-size: clamp(2.2rem, 5vw, 3rem);
@@ -821,6 +886,7 @@ a.ethereal-button {
 }
 .insta-container {
     width: 340px;
+    max-width: 100%;
     height: 680px;
     overflow: hidden;
     border-radius: var(--border-radius-large);
@@ -843,7 +909,8 @@ a.ethereal-button {
         gap: 30px;
     }
     .insta-container {
-        width: 300px;
+        width: 100%;
+        max-width: 300px;
         height: 600px;
     }
 }
@@ -908,7 +975,7 @@ a.ethereal-button {
     font-weight: 600;
 }
 .legal-highlight {
-    background: rgba(93, 167, 57, 0.05);
+    background: rgba(var(--rgb-primary-green), 0.05);
     border-left: 4px solid var(--ibc-green);
     padding: 1.5rem 2rem;
     margin: 2rem 0;
@@ -937,7 +1004,7 @@ a.ethereal-button {
     border-bottom: 1px solid var(--ibc-border-light);
 }
 .legal-page-container table tr:hover {
-    background: rgba(64, 84, 178, 0.03);
+    background: rgba(var(--rgb-primary-blue), 0.03);
 }
 @media (max-width: 768px) {
     .legal-page-container {
@@ -959,8 +1026,8 @@ a.ethereal-button {
 @media (min-width: 1400px) {
     .partner-card:hover {
         transform: translateY(-12px) scale(1.02);
-        box-shadow: 0 25px 50px rgba(32, 35, 74, 0.15), 0 10px 25px rgba(0, 0, 0, 0.08);
-        border-color: rgba(64, 84, 178, 0.25);
+        box-shadow: 0 25px 50px rgba(var(--rgb-primary-blue), 0.15), 0 10px 25px rgba(0, 0, 0, 0.08);
+        border-color: rgba(var(--rgb-primary-blue), 0.25);
     }
     .partner-card:hover::before {
         opacity: 1;
@@ -974,7 +1041,7 @@ a.ethereal-button {
     .partner-card:hover {
         transform: none;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        border-color: rgba(64, 84, 178, 0.1);
+        border-color: rgba(var(--rgb-primary-blue), 0.1);
     }
     .partner-card:hover::before {
         opacity: 0;
@@ -1021,7 +1088,7 @@ a.ethereal-button {
     transform: translateY(-10px);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
     border-top-color: var(--ibc-green);
-    border-color: #d8dee3;
+    border-color: var(--ibc-border-light);
 }
 .angebot-card:hover::before {
     opacity: 0.6;
@@ -1085,5 +1152,5 @@ a.ethereal-button {
     }
 }
 .flip-card-back {
-    background: linear-gradient(135deg, #20234A 0%, #151730 100%);
+    background: linear-gradient(135deg, var(--ibc-blue) 0%, var(--ibc-blue-dark) 100%);
 }
