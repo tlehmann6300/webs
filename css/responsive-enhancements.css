@@ -10,7 +10,7 @@ html {
   /* Prevent overscroll bounce on Safari */
   overscroll-behavior-y: contain;
   /* Scroll padding for sticky navbar - works in all modern browsers */
-  scroll-padding-top: 80px;
+  scroll-padding-top: 90px;
 }
 
 /* Disable smooth scroll when user prefers reduced motion */
@@ -121,11 +121,18 @@ main,
 
 /* ===== NAVBAR RESPONSIVE ===== */
 .navbar {
-  padding: 1rem 0;
+  /* Mobile padding adjustments defined in style.css @media queries */
   transition: all 0.3s ease;
   /* Hardware acceleration for smooth transitions */
   transform: translateZ(0);
   backface-visibility: hidden;
+}
+
+.navbar .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .navbar-brand img {
@@ -137,30 +144,24 @@ main,
 }
 
 @media (max-width: 991px) {
+  .navbar .container {
+    flex-wrap: nowrap;
+  }
+  
   .navbar-collapse {
-    background: #ffffff;
-    padding: 1.5rem;
-    margin-top: 1rem;
-    border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-    /* Smooth expand/collapse animation */
-    transition: all 0.3s ease-in-out;
-    /* Prevent horizontal scroll on mobile menu */
-    max-width: 100%;
-    overflow-x: hidden;
+    /* Mobile-specific collapse styles now centrally defined in style.css */
+    flex-basis: 100%;
   }
   
   .navbar-nav .nav-link {
-    padding: 0.75rem 0;
-    /* Larger touch target on mobile */
+    /* Larger touch target on mobile - defined in style.css */
     min-height: 48px;
     display: flex;
     align-items: center;
   }
   
   .navbar .lang-toggle {
-    margin-top: 1rem;
-    /* Ensure language toggle is easily tappable */
+    /* Ensure language toggle is easily tappable - defined in style.css */
     min-height: 48px;
   }
 }
