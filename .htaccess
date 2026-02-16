@@ -73,7 +73,7 @@ ErrorDocument 500 /500.html
     Require all denied
 </FilesMatch>
 
-<DirectoryMatch "^\.git">
+<DirectoryMatch "\.git">
     Require all denied
 </DirectoryMatch>
 
@@ -83,7 +83,7 @@ ErrorDocument 500 /500.html
 </FilesMatch>
 
 # Sperrt den privaten Ordner komplett
-<DirectoryMatch "^.*/private/">
+<DirectoryMatch "(^|/)private/">
     Require all denied
 </DirectoryMatch>
 
