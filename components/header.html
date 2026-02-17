@@ -1,0 +1,91 @@
+    <nav class="navbar navbar-expand-lg" aria-label="Hauptnavigation" role="navigation">
+        <div class="container mx-auto px-4">
+            <a class="navbar-brand" href="index.html" aria-label="Zur Startseite">
+                <img src="assets/img/ibc_logo_original_navbar.webp" alt="IBC Logo" class="navbar-logo">
+            </a>
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNav"
+                    aria-controls="mainNav"
+                    aria-expanded="false"
+                    aria-label="Hauptmenü öffnen"
+                    data-i18n-aria="navbar-toggle">
+                <span class="toggler-icon" aria-hidden="true">
+                    <span class="toggler-bar"></span>
+                    <span class="toggler-bar"></span>
+                    <span class="toggler-bar"></span>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center" role="menubar">
+                    <li class="nav-item" role="none">
+                        <a class="nav-link" href="fuer-studierende.html" role="menuitem" data-i18n="nav-students">Für Studierende</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a class="nav-link" href="fuer-unternehmen.html" role="menuitem" data-i18n="nav-companies">Für Unternehmen</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a class="nav-link" href="ueber-uns.html" role="menuitem" data-i18n="nav-about">Über uns</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a class="nav-link" href="unser-netzwerk.html" role="menuitem" data-i18n="nav-network">Unser Netzwerk</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a class="nav-link" href="referenzen.html" role="menuitem" data-i18n="nav-references">Referenzen</a>
+                    </li>
+                    <li class="nav-item" role="none">
+                        <a class="nav-link" href="kontakt.html" role="menuitem" data-i18n="nav-contact">Kontakt</a>
+                    </li>
+                    <li class="nav-item dropdown ms-lg-3" role="none">
+                        <button class="lang-toggle dropdown-toggle"
+                                type="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                                aria-haspopup="true"
+                                aria-label="Sprache wählen"
+                                data-i18n-aria="navbar-lang-toggle">
+                            <img id="activeFlag" src="assets/img/flags/de.svg" alt="" class="flag-img" aria-hidden="true">
+                            <span class="d-lg-none ms-2" data-i18n="navbar-lang-change">Sprache ändern</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end lang-dropdown" role="menu" aria-label="Sprachauswahl" data-i18n-aria="navbar-lang-menu">
+                            <li role="none">
+                                <a class="lang-item"
+                                   href="?lang=de"
+                                   role="menuitem"
+                                   data-flag="assets/img/flags/de.svg"
+                                   data-lang="de"
+                                   aria-current="true"
+                                   aria-label="Deutsch">
+                                    <img src="assets/img/flags/de.svg" alt="" class="flag-img" aria-hidden="true">
+                                    <span>Deutsch</span>
+                                </a>
+                            </li>
+                            <li role="none">
+                                <a class="lang-item"
+                                   href="?lang=en"
+                                   role="menuitem"
+                                   data-flag="assets/img/flags/gb.svg"
+                                   data-lang="en"
+                                   aria-label="English">
+                                    <img src="assets/img/flags/gb.svg" alt="" class="flag-img" aria-hidden="true">
+                                    <span>English</span>
+                                </a>
+                            </li>
+                            <li role="none">
+                                <a class="lang-item"
+                                   href="?lang=fr"
+                                   role="menuitem"
+                                   data-flag="assets/img/flags/fr.svg"
+                                   data-lang="fr"
+                                   aria-label="Français">
+                                    <img src="assets/img/flags/fr.svg" alt="" class="flag-img" aria-hidden="true">
+                                    <span>Français</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
