@@ -1539,9 +1539,9 @@ button[type="submit"] {
     z-index: -1;
 }
 /* Stronger overlay on mobile for better text readability */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     #hero-section .overlay {
-        background: rgba(0, 0, 0, 0.6);
+        background: rgba(0, 0, 0, 0.5);
     }
 }
 #hero-section .container {
