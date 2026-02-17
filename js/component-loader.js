@@ -14,7 +14,15 @@
             .then(html => {
                 const target = document.getElementById(targetId);
                 if (target) {
-                    target.innerHTML = html;
+                    // Use DOMParser for safer HTML parsing
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    
+                    // Clear target and append parsed content
+                    target.innerHTML = '';
+                    Array.from(doc.body.childNodes).forEach(node => {
+                        target.appendChild(node.cloneNode(true));
+                    });
                     
                     // Event für geladene Komponente auslösen
                     const event = new CustomEvent('componentLoaded', {
@@ -24,7 +32,7 @@
                 }
             })
             .catch(error => {
-                console.error(`Fehler beim Laden der Komponente ${url}:`, error);
+                console.error(`Error loading component ${url}:`, error);
             });
     }
 
