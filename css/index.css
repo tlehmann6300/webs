@@ -1644,9 +1644,6 @@ a.btn:focus-visible {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-    .competency-card {
-        margin-bottom: 2rem;
-    }
     .competencies-section-header {
         margin-bottom: 2rem;
     }
