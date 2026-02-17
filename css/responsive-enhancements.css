@@ -137,7 +137,7 @@ main,
 
 .navbar-brand img {
   height: auto;
-  max-height: 50px;
+  max-height: 40px;
   width: auto;
   /* Prevent image distortion */
   object-fit: contain;
