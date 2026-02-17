@@ -85,6 +85,12 @@ body.loaded {
     transition: opacity 0.3s ease-in;
   }
 }
+/* Instant fade-in for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in {
+    opacity: 1;
+  }
+}
 img, video, iframe, embed, object, canvas {
   border: none;
   outline: none;
@@ -478,9 +484,6 @@ h1, h2, h3, h4, h5, h6 {
 .btn-primary {
   background: var(--primary-color);
   color: var(--text-light);
-  -webkit-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.3s ease;
 }
 .btn-primary:hover {
   background: var(--ibc-blue-dark);
@@ -489,16 +492,20 @@ h1, h2, h3, h4, h5, h6 {
           transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(64, 84, 178, 0.3);
 }
-.btn-outline-light {
-  -webkit-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
 .btn-outline-light:hover {
   -webkit-transform: translateY(-2px);
        -o-transform: translateY(-2px);
           transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+}
+/* Button transitions - respects user preference */
+@media (prefers-reduced-motion: no-preference) {
+  .btn-primary,
+  .btn-outline-light {
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
 }
 .info-card .btn {
   border: none;
