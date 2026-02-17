@@ -55,6 +55,14 @@ body {
   /* Better font rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Prevent flickering during component loading */
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-in;
+  -o-transition: opacity 0.3s ease-in;
+  transition: opacity 0.3s ease-in;
+}
+body.loaded {
+  opacity: 1;
 }
 img, video, iframe, embed, object, canvas {
   border: none;
@@ -452,6 +460,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 .btn-primary:hover {
   background: var(--ibc-blue-dark);
+  -webkit-transform: translateY(-2px);
+       -o-transform: translateY(-2px);
+          transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(var(--rgb-primary-blue), 0.3);
 }
 .info-card .btn {
