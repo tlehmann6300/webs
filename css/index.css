@@ -1642,7 +1642,10 @@ a.btn:focus-visible {
 @media (max-width: 767px) {
     .competencies-cards-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 2rem;
+    }
+    .competency-card {
+        margin-bottom: 2rem;
     }
     .competencies-section-header {
         margin-bottom: 2rem;
@@ -1690,6 +1693,22 @@ a.btn:focus-visible {
     .competency-card.is-active .competency-card__content {
         display: block;
         padding: 0 1.5rem 1.75rem 1.5rem;
+    }
+}
+
+/* Disable hover effects on touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .competency-card:hover {
+        transform: none;
+        box-shadow: var(--competencies-shadow-card);
+    }
+    .competency-card:hover .competency-card__image {
+        transform: none;
+    }
+    /* Ensure tap/click interaction works by showing active feedback */
+    .competency-card:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
     }
 }
 .stats-section {
