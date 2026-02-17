@@ -1642,14 +1642,10 @@ a.btn:focus-visible {
 @media (max-width: 768px) {
     .competencies-cards-grid {
         grid-template-columns: 1fr;
-        gap: 0;
+        gap: 1.25rem;
     }
     .competency-card {
         height: auto;
-        margin-bottom: 20px;
-    }
-    .competency-card:last-child {
-        margin-bottom: 0;
     }
     .competencies-section-header {
         margin-bottom: 2rem;
