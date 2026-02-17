@@ -49,6 +49,7 @@ main,
 }
 
 /* ===== RESPONSIVE CONTAINER IMPROVEMENTS ===== */
+/* Mobile: px-4 (1rem), Desktop: more padding */
 .container {
   width: 100%;
   padding-right: 1rem;
@@ -73,10 +74,15 @@ main,
   }
 }
 
+@media (min-width: 1200px) {
+  .container {
+    padding-right: 2.5rem;
+    padding-left: 2.5rem;
+  }
+}
+
 /* ===== HERO SECTION RESPONSIVE ===== */
 #hero-section {
-  min-height: 100vh;
-  /* Safari iOS address bar fix - use dynamic viewport */
   min-height: 100dvh;
   display: flex;
   align-items: center;
@@ -167,51 +173,8 @@ main,
 }
 
 /* ===== COMPETENCY CARDS RESPONSIVE ===== */
-.competencies-cards-grid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(2, 1fr);
-  margin: 0 auto;
-  max-width: 100%;
-}
-
-/* Small screens - 3 columns with better spacing */
-@media (min-width: 640px) {
-  .competencies-cards-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
-    padding: 0 1rem;
-  }
-}
-
-/* Medium screens - 3 columns with optimal spacing */
-@media (min-width: 768px) {
-  .competencies-cards-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    padding: 0 1.5rem;
-  }
-}
-
-/* Large screens - 4 columns */
-@media (min-width: 1024px) {
-  .competencies-cards-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    padding: 0 2rem;
-    max-width: 1400px;
-  }
-}
-
-/* Extra large screens - 4 columns with max-width constraint */
-@media (min-width: 1400px) {
-  .competencies-cards-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    padding: 0 2rem;
-    max-width: 1600px;
-  }
-}
+/* Competency cards grid is defined in index.css */
+/* Desktop: 2 columns, Mobile (<768px): 1 column stacked */
 
 .competency-card {
   width: 100%;
@@ -355,8 +318,29 @@ main,
 }
 
 /* ===== SPACING RESPONSIVE ===== */
+/* Consistent vertical spacing for sections */
 .section-spacing {
   padding: clamp(3rem, 8vw, 6rem) 0;
+}
+
+/* Competencies section spacing */
+#competencies-section {
+  padding: clamp(3rem, 6vw, 5rem) 0;
+}
+
+/* Mobile: less padding, Desktop: more padding */
+@media (max-width: 767px) {
+  section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  section {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 /* ===== IMAGE RESPONSIVE ===== */
