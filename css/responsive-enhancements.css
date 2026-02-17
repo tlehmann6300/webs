@@ -171,26 +171,45 @@ main,
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(2, 1fr);
+  margin: 0 auto;
+  max-width: 100%;
 }
 
+/* Small screens - 3 columns with better spacing */
 @media (min-width: 640px) {
   .competencies-cards-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.25rem;
+    padding: 0 1rem;
   }
 }
 
+/* Medium screens - 3 columns with optimal spacing */
+@media (min-width: 768px) {
+  .competencies-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding: 0 1.5rem;
+  }
+}
+
+/* Large screens - 4 columns */
 @media (min-width: 1024px) {
   .competencies-cards-grid {
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
+    padding: 0 2rem;
+    max-width: 1400px;
   }
 }
 
+/* Extra large screens - 4 columns with max-width constraint */
 @media (min-width: 1400px) {
   .competencies-cards-grid {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 0 2rem;
+    max-width: 1600px;
   }
 }
 

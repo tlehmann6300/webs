@@ -1451,6 +1451,8 @@ a.btn:focus-visible {
     gap: 1rem;
     position: relative;
     z-index: 1;
+    margin: 0 auto;
+    max-width: 100%;
 }
 .competency-card {
     background: var(--ibc-white, #ffffff);
