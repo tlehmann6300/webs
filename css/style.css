@@ -24,6 +24,8 @@ html {
   outline: none;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: contain;
+  /* Smooth scrolling for anchor navigation */
+  scroll-behavior: smooth;
   /* Scroll padding for smooth anchor navigation */
   scroll-padding-top: 80px;
   /* Text size adjustment */
@@ -62,6 +64,16 @@ body {
   transition: opacity 0.3s ease-in;
 }
 body.loaded {
+  opacity: 1;
+}
+/* Fade-in utility class for smooth animations */
+.fade-in {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-in;
+  -o-transition: opacity 0.3s ease-in;
+  transition: opacity 0.3s ease-in;
+}
+.fade-in.loaded {
   opacity: 1;
 }
 img, video, iframe, embed, object, canvas {
@@ -457,13 +469,27 @@ h1, h2, h3, h4, h5, h6 {
 .btn-primary {
   background: var(--primary-color);
   color: var(--text-light);
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 .btn-primary:hover {
   background: var(--ibc-blue-dark);
   -webkit-transform: translateY(-2px);
        -o-transform: translateY(-2px);
           transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(var(--rgb-primary-blue), 0.3);
+  box-shadow: 0 6px 20px rgba(64, 84, 178, 0.3);
+}
+.btn-outline-light {
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.btn-outline-light:hover {
+  -webkit-transform: translateY(-2px);
+       -o-transform: translateY(-2px);
+          transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
 }
 .info-card .btn {
   border: none;
