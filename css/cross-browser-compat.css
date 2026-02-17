@@ -1,0 +1,187 @@
+/*
+ * Cross-Browser Compatibility CSS
+ * Ensures consistent behavior across Safari, Chrome, Firefox, and Edge
+ */
+
+/* 
+ * Flexbox Gap Fallback for older Safari/Webkit browsers
+ * Safari < 14.1 doesn't support gap property in flexbox
+ * Using @supports to provide fallback with margins
+ */
+@supports not (gap: 1rem) {
+  /* Instagram feed container fallback */
+  #instagram-feed-container {
+    margin-left: -7.5px;
+    margin-right: -7.5px;
+  }
+  
+  #instagram-feed-container > * {
+    margin-left: 7.5px;
+    margin-right: 7.5px;
+  }
+
+  /* Bubble button fallback */
+  .bubble-btn,
+  .bubbly-button {
+    margin-left: -0.25rem;
+    margin-right: -0.25rem;
+  }
+  
+  .bubble-btn > *,
+  .bubbly-button > * {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+  }
+
+  /* Copyright area fallback */
+  .copyright-area .container {
+    margin: -0.5rem;
+  }
+  
+  .copyright-area .container > * {
+    margin: 0.5rem;
+  }
+
+  /* Social links fallback */
+  .social-links {
+    margin: -0.5rem;
+  }
+  
+  .social-links > * {
+    margin: 0.5rem;
+  }
+
+  /* Value cards fallback */
+  .value-cards-container {
+    margin: -0.75rem;
+  }
+  
+  .value-cards-container > * {
+    margin: 0.75rem;
+  }
+}
+
+/* 
+ * Images in Flex Containers - Prevent Distortion
+ * Ensures images maintain aspect ratio in flex layouts
+ */
+.flex-container img,
+[class*="flex"] img,
+[style*="display: flex"] img,
+[style*="display:flex"] img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  flex-shrink: 0;
+}
+
+/* Specific image containers that use object-fit */
+.kuratorium-img,
+.testimonial-quote img,
+.flag-img,
+.team-member-img,
+.partner-logo img,
+.service-image img,
+.hero-image img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+/* 
+ * Safari-specific fixes for flexbox
+ */
+@supports (-webkit-appearance: none) {
+  /* Fix flex-shrink issues in Safari */
+  .flex-container > *,
+  [class*="flex"] > * {
+    flex-shrink: 1;
+    min-width: 0;
+    min-height: 0;
+  }
+  
+  /* Prevent text overflow in flex items */
+  .flex-container p,
+  [class*="flex"] p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
+/* 
+ * Backdrop filter fixes
+ * Already handled by autoprefixer, but adding fallback for very old browsers
+ */
+@supports not ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+  .modal-overlay,
+  .navbar-scrolled,
+  [class*="backdrop"] {
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+  
+  [class*="backdrop"][class*="dark"] {
+    background-color: rgba(0, 0, 0, 0.85);
+  }
+}
+
+/* 
+ * Grid/Flexbox hybrid fallback for very old browsers
+ */
+@supports not (display: grid) {
+  .grid-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .grid-item {
+    flex: 1 1 auto;
+  }
+}
+
+/*
+ * Smooth scrolling with fallback
+ */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* 
+ * Fix for iOS Safari input zoom
+ */
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
+/*
+ * Touch action optimization for better performance on mobile Safari
+ */
+a, button, input, select, textarea {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/*
+ * Fix for flexbox in older Firefox versions
+ */
+@-moz-document url-prefix() {
+  .flex-container {
+    min-height: 0;
+    min-width: 0;
+  }
+  
+  .flex-item {
+    min-height: 0;
+    min-width: 0;
+  }
+}
