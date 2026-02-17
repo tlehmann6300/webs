@@ -1176,7 +1176,6 @@ button[type="submit"] {
     animation: fadeInUp 1s 0.4s forwards cubic-bezier(0.19, 1, 0.22, 1);
 }
 #hero-section {
-    height: 90vh;
     min-height: 100dvh;
     position: relative;
     display: flex;

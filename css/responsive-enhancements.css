@@ -82,21 +82,7 @@ main,
 }
 
 /* ===== HERO SECTION RESPONSIVE ===== */
-#hero-section {
-  min-height: 100dvh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  /* Prevent scroll issues on mobile */
-  overflow: hidden;
-}
-
-/* Fallback for browsers that don't support dvh */
-@supports not (min-height: 100dvh) {
-  #hero-section {
-    min-height: 100vh;
-  }
-}
+/* Hero section height is defined in style.css with dvh implementation */
 
 #hero-section .container {
   width: 100%;
