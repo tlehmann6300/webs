@@ -829,7 +829,8 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
 }
 .insta-container {
-    width: 320px;
+    width: 100%;
+    max-width: 320px;
     height: 640px;
     overflow: hidden;
     border-radius: 20px;
@@ -838,6 +839,7 @@
     transform: scale(0.9);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
     transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin: 0 auto;
 }
 .insta-container:hover {
     transform: scale(0.92);
@@ -868,7 +870,8 @@
 }
 .instagram-frame-mockup {
     position: relative;
-    width: 328px;
+    width: 100%;
+    max-width: 328px;
     height: 584px;
     aspect-ratio: 9 / 16;
     overflow: hidden;
@@ -877,7 +880,7 @@
     border: 12px solid #1a1a1a;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.1);
     transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    margin: 1rem;
+    margin: 1rem auto;
 }
 .instagram-frame-mockup::before {
     background-color: transparent;
@@ -925,8 +928,8 @@
     }
     .instagram-frame-mockup {
         position: relative;
-        width: 320px;
-        max-width: 320px;
+        width: 100%;
+        max-width: min(320px, 90vw);
         height: 640px;
         overflow: hidden;
         border-radius: 40px;
@@ -973,8 +976,8 @@
         background-color: white;
     }
     .insta-container {
-        width: 320px;
-        max-width: 320px;
+        width: 100%;
+        max-width: min(320px, 90vw);
         height: 640px;
         transform: scale(0.9);
     }
@@ -986,6 +989,23 @@
         width: 100%;
     }
 }
+
+/* Scrollbar hiding for Instagram containers */
+.insta-container {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.insta-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Additional responsive enhancements for all containers */
+.instagram-container,
+.instagram-feed-container {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
 .ethereal-button {
     position: relative;
     display: inline-block;
@@ -1143,34 +1163,7 @@
         100% { transform: translate(-50%, -50%) scale(1); }
     }
 }
-.insta-container {
-    position: relative;
-    width: 100%;
-    max-width: 540px;
-    margin: 0 auto;
-    overflow: hidden;
-}
-.insta-container iframe {
-    width: 100% !important;
-    max-width: 100%;
-    height: auto;
-    min-height: 580px;
-}
-@media (max-width: 768px) {
-    .insta-container {
-        max-width: 100%;
-        padding: 0 10px;
-    }
-    .insta-container iframe {
-        min-height: 500px;
-        max-width: 100%;
-    }
-}
-@media (max-width: 480px) {
-    .insta-container iframe {
-        min-height: 450px;
-    }
-}
+/* Removed duplicate .insta-container - consolidated at line 831 */
 .row.instagram-row {
     overflow-x: hidden;
     margin-left: 0;
@@ -1369,40 +1362,12 @@
     flex-wrap: wrap;
     padding: 20px;
 }
-.insta-container {
-    width: 280px;
-    height: 580px;
-    overflow: hidden;
-    border-radius: 16px;
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.18),
-                0 5px 15px rgba(64, 84, 178, 0.12);
-    background-color: white;
-    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-    position: relative;
-}
-.insta-container:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25),
-                0 8px 20px rgba(64, 84, 178, 0.2);
-}
-.insta-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 16px;
-    overflow: hidden;
-}
-.insta-container {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-.insta-container::-webkit-scrollbar {
-    display: none;
-}
+/* Removed duplicate .insta-container definition - consolidated above */
+/* Removed duplicate - scrollbar styles moved below */
 @media (max-width: 768px) {
     .insta-container {
-        width: 90%;
-        max-width: 320px;
+        width: 100%;
+        max-width: min(320px, 90vw);
         height: 500px;
     }
 }
@@ -1843,33 +1808,12 @@
     flex-wrap: wrap;
     padding: 30px 20px;
 }
-.insta-container {
-    width: 340px;
-    height: 680px;
-    overflow: hidden;
-    border-radius: var(--border-radius-large);
-    background-color: var(--ibc-white);
-    border: 1px solid var(--ibc-border-light);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-.insta-container:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
-}
-.insta-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
+/* Removed duplicate .insta-container definition - consolidated above */
 @media (max-width: 768px) {
     .instagram-feed-container {
         gap: 30px;
     }
-    .insta-container {
-        width: 300px;
-        height: 600px;
-    }
+    /* Removed duplicate .insta-container - already defined above */
 }
 .legal-page-container {
     max-width: 900px;
@@ -3569,4 +3513,312 @@ ol.timeline-container-new {
         border-radius: 32px;
         background-color: white;
     }
+}
+
+/* ============================================
+   COMPREHENSIVE RESPONSIVE ENHANCEMENTS
+   ============================================ */
+
+/* Ensure body and html never overflow horizontally */
+html,
+body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+/* Make all sections responsive */
+section {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+/* Container responsive fixes */
+.container,
+.container-fluid {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+/* Row responsive fixes */
+.row {
+    overflow-x: hidden;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Mobile-first improvements for very small screens (< 480px) */
+@media (max-width: 480px) {
+    /* Hero section mobile optimization */
+    .page-hero-section {
+        padding: 4rem 0;
+    }
+    
+    .page-hero-section h1 {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+    
+    .page-hero-section .lead,
+    .page-hero-section .ibc-lead {
+        font-size: clamp(1rem, 4vw, 1.25rem);
+        padding: 0 1rem;
+    }
+    
+    /* Angebot cards mobile */
+    .angebot-card {
+        padding: 1.5rem 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .angebot-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .angebot-card p {
+        font-size: 0.9rem;
+    }
+    
+    /* Flip cards mobile */
+    .flip-card {
+        min-height: 200px;
+        max-height: 250px;
+    }
+    
+    .flip-card-front h3,
+    .flip-card-back p {
+        font-size: 0.95rem;
+    }
+    
+    /* Timeline mobile optimization */
+    .timeline-content {
+        padding: 1rem;
+    }
+    
+    .timeline-content h3 {
+        font-size: 1.1rem;
+    }
+    
+    .timeline-content p {
+        font-size: 0.85rem;
+    }
+    
+    .timeline-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    /* Event slider mobile */
+    .event-slider-item {
+        min-height: 500px;
+    }
+    
+    .event-slider-content {
+        padding: 1.5rem 1rem;
+    }
+    
+    .event-slider-content h2 {
+        font-size: 1.3rem;
+    }
+    
+    .event-slider-content p {
+        font-size: 0.9rem;
+    }
+    
+    /* Carousel controls mobile */
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 35px;
+        height: 35px;
+    }
+    
+    /* Buttons mobile */
+    .btn,
+    .ethereal-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        min-width: 150px;
+    }
+    
+    /* Instagram containers mobile */
+    .instagram-frame-mockup,
+    .insta-container {
+        max-width: min(280px, 85vw);
+        transform: scale(0.85);
+    }
+    
+    /* Spacing adjustments */
+    .py-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+    
+    .py-lg-6 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+    
+    /* Gap reductions */
+    .g-4 {
+        gap: 1rem !important;
+    }
+}
+
+/* Tablet improvements (481px - 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+    .angebot-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .flip-card {
+        min-height: 220px;
+    }
+    
+    .event-slider-content {
+        padding: 2rem 1.5rem;
+    }
+    
+    .instagram-frame-mockup,
+    .insta-container {
+        max-width: min(300px, 80vw);
+    }
+}
+
+/* Small laptop/large tablet (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .angebot-card {
+        padding: 2rem;
+    }
+    
+    .event-slider-content {
+        padding: 2rem;
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* Cross-browser compatibility fixes */
+
+/* Firefox-specific fixes */
+@-moz-document url-prefix() {
+    .angebot-card,
+    .flip-card,
+    .timeline-content {
+        -moz-box-sizing: border-box;
+    }
+    
+    .instagram-frame-mockup,
+    .insta-container {
+        max-width: 100%;
+    }
+}
+
+/* Safari-specific fixes */
+@supports (-webkit-appearance: none) {
+    .page-hero-section {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .angebot-card,
+    .flip-card {
+        -webkit-transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+    }
+    
+    /* Fix for Safari's flexbox issues */
+    .event-slider-content,
+    .timeline-content {
+        -webkit-box-sizing: border-box;
+    }
+}
+
+/* Opera-specific fixes */
+@supports (-o-appearance: none) {
+    .carousel-control-prev,
+    .carousel-control-next {
+        -o-transform: translateY(-50%);
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Increase touch targets */
+    .btn,
+    .ethereal-button,
+    .flip-card,
+    .angebot-card {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Disable hover effects on touch devices */
+    .angebot-card:hover,
+    .flip-card:hover,
+    .timeline-content:hover {
+        transform: none;
+    }
+    
+    /* Better tap feedback */
+    .angebot-card:active,
+    .flip-card:active {
+        transform: scale(0.98);
+    }
+}
+
+/* High DPI/Retina display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .angebot-card,
+    .flip-card,
+    .timeline-content {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* Landscape mobile optimization */
+@media (max-width: 767px) and (orientation: landscape) {
+    .page-hero-section {
+        padding: 3rem 0;
+    }
+    
+    .event-slider-item {
+        min-height: 400px;
+    }
+    
+    .flip-card {
+        min-height: 180px;
+        max-height: 220px;
+    }
+}
+
+/* Very large screens (> 1920px) */
+@media (min-width: 1921px) {
+    .container {
+        max-width: 1800px;
+    }
+    
+    .page-hero-section h1 {
+        font-size: 5rem;
+    }
+}
+
+/* Ensure smooth scrolling on all browsers */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Prevent horizontal scrolling on all elements */
+* {
+    max-width: 100%;
+}
+
+/* Allow specific elements to exceed 100% */
+.timeline-line,
+.timeline-line-progress,
+.carousel-inner,
+.carousel-item {
+    max-width: none;
 }
