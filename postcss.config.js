@@ -1,18 +1,7 @@
 module.exports = {
   plugins: {
     autoprefixer: {
-      overrideBrowserslist: [
-        'last 4 versions',
-        'Firefox ESR',
-        'Safari >= 9',
-        'iOS >= 9',
-        'Opera >= 12',
-        'Edge >= 12',
-        'Chrome >= 60',
-        '> 1%',
-        'not dead'
-      ],
-      grid: true
+      grid: 'autoplace'
     }
   }
 }
