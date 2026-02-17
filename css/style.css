@@ -24,8 +24,6 @@ html {
   outline: none;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: contain;
-  /* Smooth scrolling for anchor navigation */
-  scroll-behavior: smooth;
   /* Scroll padding for smooth anchor navigation */
   scroll-padding-top: 80px;
   /* Text size adjustment */
@@ -36,6 +34,12 @@ html {
   /* Remove any default margin/padding */
   margin: 0;
   padding: 0;
+}
+/* Smooth scrolling for anchor navigation - respects user preference */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 body {
   overflow-x: hidden;
@@ -69,12 +73,17 @@ body.loaded {
 /* Fade-in utility class for smooth animations */
 .fade-in {
   opacity: 0;
-  -webkit-transition: opacity 0.3s ease-in;
-  -o-transition: opacity 0.3s ease-in;
-  transition: opacity 0.3s ease-in;
 }
 .fade-in.loaded {
   opacity: 1;
+}
+/* Fade-in transitions - respects user preference */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in {
+    -webkit-transition: opacity 0.3s ease-in;
+    -o-transition: opacity 0.3s ease-in;
+    transition: opacity 0.3s ease-in;
+  }
 }
 img, video, iframe, embed, object, canvas {
   border: none;
